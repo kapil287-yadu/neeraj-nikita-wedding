@@ -2,7 +2,6 @@
   "name": "neeraj-nikita-wedding",
   "version": "1.0.0",
   "description": "Royal Digital Wedding Invitation Website for Neeraj & Nikita | Jaipur, Rajasthan",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "node test_site.js"
@@ -14,5 +13,6 @@
     "niraj-nikita"
   ],
   "author": "Kapil Yaduvanshi <yaduvanshikapil287@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "private": true
 }
