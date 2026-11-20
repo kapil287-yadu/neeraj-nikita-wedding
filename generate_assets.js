@@ -108,14 +108,14 @@ function getSvg(title, subtitle, iconType) {
   <!-- Royal Labels -->
   <text x="220" y="358" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="24" font-weight="bold" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="2">${title}</text>
   <text x="220" y="384" font-family="'Yatra One', 'Noto Serif Devanagari', Georgia, serif" font-size="16" fill="#F3E5AB" text-anchor="middle" opacity="0.95" letter-spacing="1">${subtitle}</text>
-  <text x="220" y="405" font-family="sans-serif" font-size="10" fill="#D4AF37" text-anchor="middle" opacity="0.7" letter-spacing="3">NIRAJ &amp; NIKITA • 12 DEC 2026</text>
+  <text x="220" y="405" font-family="sans-serif" font-size="10" fill="#D4AF37" text-anchor="middle" opacity="0.7" letter-spacing="3">NEERAJ &amp; NIKITA • 12 DEC 2026</text>
 </svg>`;
 }
 
 // Generate SVG files
-fs.writeFileSync(path.join(imgDir, 'groom.svg'), getSvg('NIRAJ', 'वर (दूल्हा)', 'groom'));
+fs.writeFileSync(path.join(imgDir, 'groom.svg'), getSvg('NEERAJ', 'वर (दूल्हा)', 'groom'));
 fs.writeFileSync(path.join(imgDir, 'bride.svg'), getSvg('NIKITA', 'वधू (दुल्हन)', 'bride'));
-fs.writeFileSync(path.join(imgDir, 'couple.svg'), getSvg('NIRAJ & NIKITA', 'शुभ परिणय', 'couple'));
+fs.writeFileSync(path.join(imgDir, 'couple.svg'), getSvg('NEERAJ & NIKITA', 'शुभ परिणय', 'couple'));
 
 // Also generate minimal valid JPEG files for groom.jpg, bride.jpg, couple.jpg
 // A standard 1x1 or minimal JFIF/JPEG image buffer so <img> tags don't fail HTTP network requests

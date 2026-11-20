@@ -1,5 +1,5 @@
 /**
- * NIRAJ & NIKITA WEDDING - INTERACTIVE JAVASCRIPT
+ * NEERAJ & NIKITA WEDDING - INTERACTIVE JAVASCRIPT
  * Bilingual Royal Experience • 10 - 12 December 2026 | Jaipur, Rajasthan
  * Developed by Kapil Yaduvanshi
  */
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveCountdown();
   initScheduleFilters();
   initMobileNav();
-  initLightbox();
 });
 
 /* ==========================================================================
@@ -103,12 +102,12 @@ function updateMusicUI(isPlaying) {
 
   if (isPlaying && !isAudioMuted) {
     toggleBtn.classList.remove('muted');
-    if (enLabel) enLabel.textContent = 'Music: ON';
-    if (hiLabel) hiLabel.textContent = 'संगीत चालू';
+    if (enLabel) enLabel.textContent = 'Vakratunda Mahakaya: ON';
+    if (hiLabel) hiLabel.textContent = 'वक्रतुण्ड महाकाय: चालू';
   } else {
     toggleBtn.classList.add('muted');
     if (enLabel) enLabel.textContent = 'Music: OFF';
-    if (hiLabel) hiLabel.textContent = 'संगीत बंद';
+    if (hiLabel) hiLabel.textContent = 'संगीत: बंद';
   }
 }
 
@@ -267,7 +266,7 @@ window.addToCalendar = function(title, startISO, endISO, location, details) {
   };
 
   const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-    'Niraj & Nikita Wedding: ' + title
+    'Neeraj & Nikita Wedding: ' + title
   )}&dates=${formatGCal(startISO)}/${formatGCal(endISO)}&details=${encodeURIComponent(
     details
   )}&location=${encodeURIComponent(location)}`;
@@ -278,61 +277,61 @@ window.addToCalendar = function(title, startISO, endISO, location, details) {
 window.downloadAllEventsICS = function() {
   const events = [
     {
-      title: "Tel Mandap Ceremony - Niraj & Nikita Wedding",
+      title: "Tel Mandap Ceremony - Neeraj & Nikita Wedding",
       desc: "Traditional Tel Mandap ceremony at Tulsi Marriage Garden, Jaipur",
       start: "20261210T100000",
       end: "20261210T120000"
     },
     {
-      title: "Khanamati Magar / Khamani - Niraj & Nikita Wedding",
+      title: "Khanamati Magar / Khamani - Neeraj & Nikita Wedding",
       desc: "Khanamati Magar ritual and celebratory dinner",
       start: "20261210T180000",
       end: "20261210T210000"
     },
     {
-      title: "Haldi Ceremony - Niraj & Nikita Wedding",
+      title: "Haldi Ceremony - Neeraj & Nikita Wedding",
       desc: "Turmeric blessings and celebratory rituals",
       start: "20261211T100000",
       end: "20261211T130000"
     },
     {
-      title: "Chak Ceremony - Niraj & Nikita Wedding",
+      title: "Chak Ceremony - Neeraj & Nikita Wedding",
       desc: "Chak auspicious ritual",
       start: "20261211T140000",
       end: "20261211T150000"
     },
     {
-      title: "Mahila Sangeet - Niraj & Nikita Wedding",
+      title: "Mahila Sangeet - Neeraj & Nikita Wedding",
       desc: "Musical dance and celebratory evening",
       start: "20261211T150000",
       end: "20261211T190000"
     },
     {
-      title: "Bhat Ceremony - Niraj & Nikita Wedding",
+      title: "Bhat Ceremony - Neeraj & Nikita Wedding",
       desc: "Grand maternal family welcoming and traditional gifts ceremony",
       start: "20261211T210000",
       end: "20261211T233000"
     },
     {
-      title: "Lagan-Tika - Niraj & Nikita Wedding",
+      title: "Lagan-Tika - Neeraj & Nikita Wedding",
       desc: "Formal auspicious tilak ceremony between families",
       start: "20261212T110000",
       end: "20261212T133000"
     },
     {
-      title: "Preetibhoj / Wedding Feast - Niraj & Nikita Wedding",
+      title: "Preetibhoj / Wedding Feast - Neeraj & Nikita Wedding",
       desc: "Royal wedding feast honoring all esteemed guests",
       start: "20261212T191500",
       end: "20261212T233000"
     },
     {
-      title: "Baraat Prasthan - Niraj & Nikita Wedding",
+      title: "Baraat Prasthan - Neeraj & Nikita Wedding",
       desc: "Grand wedding procession with royal music and fanfare",
       start: "20261212T200000",
       end: "20261212T223000"
     },
     {
-      title: "Panigrahan Sanskar (Wedding Vows) - Niraj & Nikita",
+      title: "Panigrahan Sanskar (Wedding Vows) - Neeraj & Nikita",
       desc: "Sacred Saat Phere around holy Agni at auspicious Muhurat",
       start: "20261212T223000",
       end: "20261213T030000"
@@ -341,11 +340,11 @@ window.downloadAllEventsICS = function() {
 
   const venueLoc = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
 
-  let icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Niraj Nikita Wedding//IN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n";
+  let icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Neeraj Nikita Wedding//IN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n";
 
   events.forEach((ev, idx) => {
     icsContent += "BEGIN:VEVENT\r\n";
-    icsContent += `UID:wedding-event-${idx + 1}-202612@nirajnikita.com\r\n`;
+    icsContent += `UID:wedding-event-${idx + 1}-202612@neerajnikita.com\r\n`;
     icsContent += `DTSTAMP:20261120T120000Z\r\n`;
     icsContent += `DTSTART;TZID=Asia/Kolkata:${ev.start}\r\n`;
     icsContent += `DTEND;TZID=Asia/Kolkata:${ev.end}\r\n`;
@@ -361,7 +360,7 @@ window.downloadAllEventsICS = function() {
   const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
   const link = document.createElement('a');
   link.href = window.URL.createObjectURL(blob);
-  link.setAttribute('download', 'Niraj_Nikita_Wedding_Schedule_2026.ics');
+  link.setAttribute('download', 'Neeraj_Nikita_Wedding_Schedule_2026.ics');
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -420,40 +419,3 @@ function initMobileNav() {
 }
 
 
-/* ==========================================================================
-   8. LIGHTBOX MODAL FUNCTIONALITY
-   ========================================================================== */
-function initLightbox() {
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      window.closeLightbox();
-    }
-  });
-}
-
-window.openLightbox = function(src, caption) {
-  const modal = document.getElementById('gallery-lightbox');
-  const modalImg = document.getElementById('lightbox-img');
-  const captionEl = document.getElementById('lightbox-caption');
-  if (!modal || !modalImg) return;
-
-  modalImg.src = src;
-  modalImg.alt = caption || 'Niraj & Nikita Wedding Memory';
-  if (captionEl) {
-    captionEl.textContent = caption || '';
-  }
-
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-};
-
-window.closeLightbox = function(e) {
-  if (e && e.target && e.target.classList.contains('lightbox-active-img')) {
-    return; // Don't close if clicking directly on image
-  }
-  const modal = document.getElementById('gallery-lightbox');
-  if (!modal) return;
-
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-};

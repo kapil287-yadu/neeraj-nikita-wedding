@@ -1,7 +1,7 @@
 {
-  "name": "niraj-nikita-wedding",
+  "name": "neeraj-nikita-wedding",
   "version": "1.0.0",
-  "description": "Niraj & Nikita Digital Wedding Invitation Website - Developed by Kapil Yaduvanshi",
+  "description": "Royal Digital Wedding Invitation Website for Neeraj & Nikita | Jaipur, Rajasthan",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

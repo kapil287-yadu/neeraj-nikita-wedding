@@ -47,7 +47,7 @@ const ogSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"
   <text x="600" y="225" font-family="'Montserrat', sans-serif" font-size="20" font-weight="bold" fill="#C6A15B" text-anchor="middle" letter-spacing="6">A CELEBRATION OF LOVE</text>
 
   <!-- Couple Names -->
-  <text x="600" y="320" font-family="'Cinzel', Georgia, serif" font-size="76" font-weight="900" fill="#FFF9F1" text-anchor="middle" letter-spacing="6">NIRAJ &amp; NIKITA</text>
+  <text x="600" y="320" font-family="'Cinzel', Georgia, serif" font-size="76" font-weight="900" fill="#FFF9F1" text-anchor="middle" letter-spacing="6">NEERAJ &amp; NIKITA</text>
 
   <!-- Wedding Invitation -->
   <text x="600" y="385" font-family="'Playfair Display', Georgia, serif" font-size="32" font-style="italic" fill="url(#gold)" text-anchor="middle" letter-spacing="2">Wedding Invitation • विवाह निमंत्रण</text>
