@@ -107,6 +107,9 @@ if (fs.existsSync(path.join(imgDir, 'bride-seated.jpg'))) {
 if (fs.existsSync(path.join(imgDir, 'couple-rings.jpg'))) {
   fs.copyFileSync(path.join(imgDir, 'couple-rings.jpg'), path.join(imgDir, 'couple.jpg'));
 }
-console.log('✓ Authentic photographs synced: groom.jpg, bride.jpg, couple.jpg');
+if (fs.existsSync(path.join(imgDir, 'og-preview.jpg'))) {
+  fs.copyFileSync(path.join(imgDir, 'og-preview.jpg'), path.join(imgDir, 'og-share.jpg'));
+}
+console.log('✓ Authentic photographs synced: groom.jpg, bride.jpg, couple.jpg, og-preview.jpg, og-share.jpg');
 
 console.log('--- PRODUCTION BUILD PREPARATION COMPLETE ---');

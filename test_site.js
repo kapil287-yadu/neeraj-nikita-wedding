@@ -117,6 +117,43 @@ if (!html.includes('class="hero-countdown-wrap"') || !html.includes('class="coun
 });
 console.log('✓ Hero countdown timer verified: 4 bilingual units (Days, Hours, Minutes, Seconds).');
 
+// L. Check Open Graph & Twitter Social Sharing Metadata
+const ogTitle = 'NEERAJ &amp; NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण';
+const ogDesc = 'A Celebration of Love, Togetherness &amp; Forever. Join us on Saturday, 12 December 2026 at Tulsi Marriage Garden, Jaipur.';
+const ogImgUrl = 'https://neeraj-nikita-wedding.vercel.app/images/og-preview.jpg';
+
+if (!html.includes(ogTitle) && !html.includes('NEERAJ & NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण')) {
+  throw new Error('Missing exact Open Graph title');
+}
+if (!html.includes(ogDesc) && !html.includes('A Celebration of Love, Togetherness & Forever. Join us on Saturday, 12 December 2026 at Tulsi Marriage Garden, Jaipur.')) {
+  throw new Error('Missing exact Open Graph description');
+}
+if (!html.includes(ogImgUrl)) {
+  throw new Error('Missing absolute Open Graph image URL');
+}
+['og:title', 'og:description', 'og:image', 'og:url', 'og:type', 'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image'].forEach(tag => {
+  if (!html.includes(`"${tag}"`)) throw new Error(`Missing required social tag: ${tag}`);
+});
+
+// Check og-preview.jpg file
+const ogImgPath = path.join(projectDir, 'images', 'og-preview.jpg');
+if (!fs.existsSync(ogImgPath)) throw new Error('Missing og-preview.jpg');
+const ogBuffer = fs.readFileSync(ogImgPath);
+let foundOgDimensions = false;
+for (let i = 0; i < ogBuffer.length - 8; i++) {
+  if (ogBuffer[i] === 0xFF && (ogBuffer[i+1] === 0xC0 || ogBuffer[i+1] === 0xC2)) {
+    const h = ogBuffer.readUInt16BE(i + 5);
+    const w = ogBuffer.readUInt16BE(i + 7);
+    if (w !== 1200 || h !== 630) {
+      throw new Error(`og-preview.jpg dimensions are ${w}x${h}, expected 1200x630!`);
+    }
+    foundOgDimensions = true;
+    break;
+  }
+}
+if (!foundOgDimensions) throw new Error('Could not verify og-preview.jpg dimensions');
+console.log('✓ Open Graph metadata & 1200x630 preview image verified.');
+
 console.log('✓ All file and code integrity checks passed successfully!');
 
 // Test HTTP server
