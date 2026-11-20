@@ -35,13 +35,6 @@
   
   <!-- Main Stylesheet -->
   
-  <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
-  
-  <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
-  
-  <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
-  
-  <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
   <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
   
   <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
@@ -50,6 +43,9 @@
   <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
   
   
+  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
+  
+
   <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
   <link rel="stylesheet" href="style.css?v=20261121">
   <link rel="stylesheet" href="/style.css?v=20261121">
@@ -3331,13 +3327,6 @@ img {
 
   <!-- Main JavaScript Logic -->
   
-  <!-- External Script Fallbacks (Relative & Absolute) -->
-  
-  <!-- External Script Fallbacks (Relative & Absolute) -->
-  
-  <!-- External Script Fallbacks (Relative & Absolute) -->
-  
-  <!-- External Script Fallbacks (Relative & Absolute) -->
   <!-- Production Inlined Interactive Logic -->
   
   <!-- Production Inlined Interactive Logic -->
@@ -3346,6 +3335,9 @@ img {
   <!-- Production Inlined Interactive Logic -->
   
   
+  <!-- Production Inlined Interactive Logic -->
+  
+
   <!-- External Script Fallbacks (Relative & Absolute) -->
   <script src="script.js?v=20261121"></script>
   <script src="/script.js?v=20261121"></script>
@@ -3504,10 +3496,10 @@ function generateWelcomeParticles() {
 function initLiveCountdown() {
   const weddingDate = new Date('2026-12-12T11:00:00+05:30').getTime();
 
-  const daysEl = document.getElementById('cd-days');
-  const hoursEl = document.getElementById('cd-hours');
-  const minsEl = document.getElementById('cd-minutes');
-  const secsEl = document.getElementById('cd-seconds');
+  const daysEl = document.getElementById('days-val') || document.getElementById('cd-days');
+  const hoursEl = document.getElementById('hours-val') || document.getElementById('cd-hours');
+  const minsEl = document.getElementById('minutes-val') || document.getElementById('cd-minutes');
+  const secsEl = document.getElementById('seconds-val') || document.getElementById('cd-seconds');
 
   if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 

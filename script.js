@@ -150,10 +150,10 @@ function generateWelcomeParticles() {
 function initLiveCountdown() {
   const weddingDate = new Date('2026-12-12T11:00:00+05:30').getTime();
 
-  const daysEl = document.getElementById('cd-days');
-  const hoursEl = document.getElementById('cd-hours');
-  const minsEl = document.getElementById('cd-minutes');
-  const secsEl = document.getElementById('cd-seconds');
+  const daysEl = document.getElementById('days-val') || document.getElementById('cd-days');
+  const hoursEl = document.getElementById('hours-val') || document.getElementById('cd-hours');
+  const minsEl = document.getElementById('minutes-val') || document.getElementById('cd-minutes');
+  const secsEl = document.getElementById('seconds-val') || document.getElementById('cd-seconds');
 
   if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 

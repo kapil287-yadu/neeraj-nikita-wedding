@@ -15,9 +15,13 @@ let html = fs.readFileSync(indexPath, 'utf8');
 const css = fs.readFileSync(stylePath, 'utf8');
 const js = fs.readFileSync(scriptPath, 'utf8');
 
-// 2. Remove any previously inlined style or script blocks to avoid duplicates
-html = html.replace(/<style id="royal-wedding-styles">[\s\S]*?<\/style>/, '');
-html = html.replace(/<script id="royal-wedding-script">[\s\S]*?<\/script>/, '');
+// 2. Remove any previously inlined style or script blocks and link tags to avoid duplicates
+html = html.replace(/<style id="royal-wedding-styles">[\s\S]*?<\/style>/g, '');
+html = html.replace(/<script id="royal-wedding-script">[\s\S]*?<\/script>/g, '');
+html = html.replace(/<!-- External Stylesheet Fallbacks[\s\S]*?<!-- Production Inlined Stylesheet/g, '<!-- Production Inlined Stylesheet');
+html = html.replace(/<link rel="stylesheet" href="[^"]*style\.css[^"]*">\s*/g, '');
+html = html.replace(/<!-- External Script Fallbacks[\s\S]*?<!-- Production Inlined Interactive Logic/g, '<!-- Production Inlined Interactive Logic');
+html = html.replace(/<script src="[^"]*script\.js[^"]*"><\/script>\s*/g, '');
 
 // 3. Inject CSS into <head> with both external link fallbacks and inlined stylesheet
 const styleBlock = `
@@ -28,9 +32,10 @@ const styleBlock = `
   <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
   <style id="royal-wedding-styles">
 ${css}
-  </style>`;
+  </style>
+</head>`;
 
-html = html.replace(/<link rel="stylesheet" href="style\.css">/, styleBlock);
+html = html.replace('</head>', styleBlock);
 
 // 4. Inject JS before </body> with both external script fallbacks and inlined script
 const scriptBlock = `
@@ -41,9 +46,10 @@ const scriptBlock = `
   <!-- Production Inlined Interactive Logic -->
   <script id="royal-wedding-script">
 ${js}
-  </script>`;
+  </script>
+</body>`;
 
-html = html.replace(/<script src="script\.js"><\/script>/, scriptBlock);
+html = html.replace('</body>', scriptBlock);
 
 fs.writeFileSync(indexPath, html, 'utf8');
 console.log('✓ index.html updated: 100% self-contained styling & interactivity embedded + external fallbacks.');

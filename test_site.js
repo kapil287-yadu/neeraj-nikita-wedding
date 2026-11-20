@@ -105,6 +105,18 @@ console.log('✓ All real photograph assets verified (> 100 KB).');
 });
 console.log('✓ Authentic user MP3 audio verified (3.7 MB).');
 
+// K. Check Countdown Timer in Hero Section
+if (!html.includes('class="hero-countdown-wrap"') || !html.includes('class="countdown-tiles"')) {
+  throw new Error('Missing countdown timer wrapper or tiles in Hero section');
+}
+['days-val', 'hours-val', 'minutes-val', 'seconds-val'].forEach(id => {
+  if (!html.includes(`id="${id}"`)) throw new Error(`Missing countdown element ID: ${id}`);
+});
+['Days', 'Hours', 'Minutes', 'Seconds', 'दिन', 'घंटे', 'मिनट', 'सेकंड'].forEach(lbl => {
+  if (!html.includes(lbl)) throw new Error(`Missing countdown bilingual label: ${lbl}`);
+});
+console.log('✓ Hero countdown timer verified: 4 bilingual units (Days, Hours, Minutes, Seconds).');
+
 console.log('✓ All file and code integrity checks passed successfully!');
 
 // Test HTTP server
