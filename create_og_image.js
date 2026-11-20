@@ -1,0 +1,69 @@
+const fs = require('fs');
+const path = require('path');
+
+const projectDir = 'C:\\Users\\Lenovo\\.gemini\\antigravity\\scratch\\niraj-nikita-wedding';
+const imgDir = path.join(projectDir, 'images');
+
+const ogSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#541C32"/>
+      <stop offset="60%" stop-color="#48243F"/>
+      <stop offset="100%" stop-color="#22081B"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5D6"/>
+      <stop offset="40%" stop-color="#C6A15B"/>
+      <stop offset="100%" stop-color="#8E6A28"/>
+    </linearGradient>
+    <pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.5" fill="#C6A15B" opacity="0.15"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#pattern)"/>
+
+  <!-- Ornate Golden Borders -->
+  <rect x="30" y="30" width="1140" height="570" rx="24" fill="none" stroke="url(#gold)" stroke-width="4"/>
+  <rect x="44" y="44" width="1112" height="542" rx="16" fill="none" stroke="#C6A15B" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.7"/>
+
+  <!-- Corner Ornaments -->
+  <g fill="url(#gold)">
+    <path d="M34,34 L80,34 Q50,50 34,80 Z"/>
+    <path d="M1166,34 L1120,34 Q1150,50 1166,80 Z"/>
+    <path d="M34,596 L80,596 Q50,580 34,550 Z"/>
+    <path d="M1166,596 L1120,596 Q1150,580 1166,550 Z"/>
+  </g>
+
+  <!-- Sacred Ganesh Invocation -->
+  <text x="600" y="110" font-family="'Cinzel', Georgia, serif" font-size="24" font-weight="bold" fill="url(#gold)" text-anchor="middle" letter-spacing="4">|| SHREE GANESHAYA NAMAH ||</text>
+  <text x="600" y="145" font-family="'Noto Sans Devanagari', sans-serif" font-size="18" fill="#F7EBF0" text-anchor="middle" letter-spacing="2">॥ श्री गणेशाय नमः ॥</text>
+
+  <!-- Decorative Flourish -->
+  <path d="M480,175 Q600,165 720,175" stroke="url(#gold)" stroke-width="2" fill="none"/>
+  <circle cx="600" cy="172" r="5" fill="url(#gold)"/>
+
+  <text x="600" y="225" font-family="'Montserrat', sans-serif" font-size="20" font-weight="bold" fill="#C6A15B" text-anchor="middle" letter-spacing="6">A CELEBRATION OF LOVE</text>
+
+  <!-- Couple Names -->
+  <text x="600" y="320" font-family="'Cinzel', Georgia, serif" font-size="76" font-weight="900" fill="#FFF9F1" text-anchor="middle" letter-spacing="6">NIRAJ &amp; NIKITA</text>
+
+  <!-- Wedding Invitation -->
+  <text x="600" y="385" font-family="'Playfair Display', Georgia, serif" font-size="32" font-style="italic" fill="url(#gold)" text-anchor="middle" letter-spacing="2">Wedding Invitation • विवाह निमंत्रण</text>
+
+  <!-- Date & Venue -->
+  <rect x="340" y="435" width="520" height="65" rx="32" fill="rgba(84, 28, 50, 0.85)" stroke="url(#gold)" stroke-width="2"/>
+  <text x="600" y="476" font-family="'Montserrat', sans-serif" font-size="22" font-weight="bold" fill="#FFF9F1" text-anchor="middle" letter-spacing="1">Saturday, 12 December 2026 • 12 दिसंबर 2026</text>
+
+  <text x="600" y="545" font-family="'Montserrat', sans-serif" font-size="20" fill="#E8D09E" text-anchor="middle" letter-spacing="1">Tulsi Marriage Garden, Near Bhairo Circle, Jaipur, Rajasthan</text>
+</svg>`;
+
+fs.writeFileSync(path.join(imgDir, 'og-share.svg'), ogSvg);
+
+// Copy hero-couple.jpg as og-share.jpg
+const coupleJpg = path.join(imgDir, 'hero-couple.jpg');
+if (fs.existsSync(coupleJpg)) {
+  fs.copyFileSync(coupleJpg, path.join(imgDir, 'og-share.jpg'));
+}
+console.log('og-share generated successfully');

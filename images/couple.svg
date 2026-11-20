@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" width="440" height="440">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#4A0E17"/>
+      <stop offset="65%" stop-color="#26040A"/>
+      <stop offset="100%" stop-color="#140205"/>
+    </radialGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5C0"/>
+      <stop offset="30%" stop-color="#D4AF37"/>
+      <stop offset="70%" stop-color="#996515"/>
+      <stop offset="100%" stop-color="#F3E5AB"/>
+    </linearGradient>
+    <pattern id="gridPat" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="15" cy="15" r="1.5" fill="#D4AF37" opacity="0.18"/>
+    </pattern>
+  </defs>
+
+  <rect width="440" height="440" fill="url(#bgGrad)"/>
+  <rect width="440" height="440" fill="url(#gridPat)"/>
+
+  <!-- Ornate Royal Gold Outer Frame -->
+  <rect x="18" y="18" width="404" height="404" rx="18" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+  <rect x="25" y="25" width="390" height="390" rx="12" fill="none" stroke="#D4AF37" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.75"/>
+
+  <!-- Ornate Floral Corners -->
+  <g fill="url(#goldGrad)">
+    <path d="M22,22 L50,22 Q32,32 22,50 Z"/>
+    <path d="M418,22 L390,22 Q408,32 418,50 Z"/>
+    <path d="M22,418 L50,418 Q32,408 22,390 Z"/>
+    <path d="M418,418 L390,418 Q408,408 418,390 Z"/>
+  </g>
+
+  <!-- Centered Icon Illustration -->
+  <g>
+    
+      <!-- Intertwined Varmala Garland & Golden Monogram -->
+      <circle cx="220" cy="180" r="65" fill="#4A0A16" stroke="#D4AF37" stroke-width="3"/>
+      <circle cx="220" cy="180" r="58" fill="none" stroke="#F3E5AB" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="220" y="190" font-family="'Cinzel', Georgia, serif" font-size="30" font-weight="bold" fill="#F3E5AB" text-anchor="middle" letter-spacing="3">N &amp; N</text>
+      <text x="220" y="210" font-family="'Yatra One', Georgia, serif" font-size="14" fill="#D4AF37" text-anchor="middle">शुभ परिणय</text>
+      <!-- Auspicious Kalash with Swastik -->
+      <path d="M195,260 L245,260 L240,295 L200,295 Z" fill="#800020" stroke="#D4AF37" stroke-width="2"/>
+      <circle cx="220" cy="250" r="14" fill="#D4AF37"/>
+      <!-- Coconut & Mango leaves -->
+      <path d="M220,236 Q210,220 220,210 Q230,220 220,236 Z" fill="#AA771C"/>
+      <path d="M205,250 Q190,235 200,225" stroke="#2E7D32" stroke-width="2.5" fill="none"/>
+      <path d="M235,250 Q250,235 240,225" stroke="#2E7D32" stroke-width="2.5" fill="none"/>
+    
+  </g>
+
+  <!-- Royal Labels -->
+  <text x="220" y="358" font-family="'Cinzel', 'Playfair Display', Georgia, serif" font-size="24" font-weight="bold" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="2">NIRAJ & NIKITA</text>
+  <text x="220" y="384" font-family="'Yatra One', 'Noto Serif Devanagari', Georgia, serif" font-size="16" fill="#F3E5AB" text-anchor="middle" opacity="0.95" letter-spacing="1">शुभ परिणय</text>
+  <text x="220" y="405" font-family="sans-serif" font-size="10" fill="#D4AF37" text-anchor="middle" opacity="0.7" letter-spacing="3">NIRAJ &amp; NIKITA • 12 DEC 2026</text>
+</svg>
