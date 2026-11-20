@@ -2184,3 +2184,88 @@ img {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ==========================================================================
+   ENHANCED CONTACT ACTIONS & MONOGRAM STYLING
+   ========================================================================== */
+.welcome-monogram-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1.5px solid var(--antique-gold);
+  padding: 6px 20px;
+  border-radius: 30px;
+  background: rgba(198, 161, 91, 0.15);
+  margin-bottom: 14px;
+}
+
+.welcome-monogram-badge .monogram-letter {
+  font-family: var(--font-cinzel);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--antique-gold-light);
+  letter-spacing: 1px;
+}
+
+.welcome-monogram-badge .monogram-amp {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--antique-gold);
+}
+
+.contact-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 250px;
+  margin-top: 18px;
+}
+
+.btn-contact-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 25px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+  min-height: 44px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-contact-action.btn-call-now {
+  background: var(--soft-champagne);
+  border: 1.5px solid var(--antique-gold);
+  color: var(--plum-deep);
+}
+
+.btn-contact-action.btn-call-now:hover,
+.btn-contact-action.primary-call {
+  background: var(--grad-gold);
+  color: var(--plum-deep);
+  border-color: var(--antique-gold);
+  box-shadow: 0 4px 15px rgba(198, 161, 91, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-contact-action.btn-whatsapp {
+  background: #25D366;
+  border: 1.5px solid #20BD5A;
+  color: #FFF;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+
+.btn-contact-action.btn-whatsapp:hover {
+  background: #1EBE5D;
+  border-color: #1AA852;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+  transform: translateY(-2px);
+}

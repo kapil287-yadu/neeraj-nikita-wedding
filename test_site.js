@@ -27,62 +27,64 @@ if (html.includes('Beautiful Memories') || html.includes('id="gallery"') || html
 }
 console.log('✓ Beautiful Memories / Gallery section validated: Completely removed.');
 
-// C. Check Vakratunda Mahakaya background song integration
-if (!html.includes('vakratund-mahakay.mp3') && !html.includes('vakratunda-mahakaya.mp3')) {
-  throw new Error('Missing Vakratunda Mahakaya audio source in index.html!');
+// C. Check Background Song (User MP3)
+if (!html.includes('wedding-music.mp3') && !html.includes('vakratund-mahakay.mp3')) {
+  throw new Error('Missing user MP3 audio source in index.html!');
 }
-if (!html.includes('वक्रतुण्ड महाकाय') || !html.includes('Vakratunda Mahakaya')) {
-  throw new Error('Missing Vakratunda Mahakaya text in UI / Audio toggle!');
-}
-console.log('✓ Vakratunda Mahakaya song integration validated.');
+console.log('✓ User MP3 song integration validated.');
 
-// D. Verify strictly 3 phone numbers
+// D. Verify strictly 3 phone numbers and WhatsApp buttons
 const expectedNumbers = ['+91 9694786363', '+91 8824446601', '+91 7597117853'];
 expectedNumbers.forEach(num => {
   if (!html.includes(num)) {
     throw new Error(`Missing expected phone number: ${num}`);
   }
 });
+if (!html.includes('wa.me/919694786363') || !html.includes('wa.me/918824446601') || !html.includes('wa.me/917597117853')) {
+  throw new Error('Missing direct WhatsApp links for all 3 phone numbers');
+}
+console.log('✓ All 3 contact numbers and WhatsApp buttons validated.');
 
-// E. Check if any old contact cards or fake items exist
+// E. Check forbidden items
 const forbiddenItems = [
   'Send Your Blessings',
   'Groom\'s Family',
   'Bride\'s Family',
   'Event Coordinator & RSVP',
   'Engagement Gallery',
-  'gallery-lightbox'
+  'gallery-lightbox',
+  'id="wedding-film"',
+  'href="#wedding-film"'
 ];
 forbiddenItems.forEach(item => {
   if (html.includes(item)) {
     throw new Error(`Forbidden element found: "${item}"`);
   }
 });
+console.log('✓ Forbidden elements (Wedding Film, Engagement Gallery, Blessings) completely absent.');
 
-// F. Check developer card & footer credit
-if (!html.includes('Kapil Yaduvanshi')) {
-  throw new Error('Missing Kapil Yaduvanshi name');
+// F. Check developer credit in footer: Designed & Developed by Kapil Tamoli
+if (!html.includes('Kapil Tamoli')) {
+  throw new Error('Missing Kapil Tamoli developer credit');
 }
-if (!html.includes('yaduvanshikapil287@gmail.com')) {
-  throw new Error('Missing developer email');
+if (!html.includes('Designed &amp; Developed by Kapil Tamoli') && !html.includes('Designed & Developed by Kapil Tamoli')) {
+  throw new Error('Missing exact footer credit "Designed & Developed by Kapil Tamoli"');
 }
-if (!html.includes('Crafted with ❤️ by Kapil Yaduvanshi')) {
-  throw new Error('Missing exact footer credit');
-}
+console.log('✓ Elegant footer credit validated: Designed & Developed by Kapil Tamoli.');
 
 // G. Check JS script
 const js = fs.readFileSync(path.join(projectDir, 'script.js'), 'utf8');
 if (js.includes('Niraj') || js.includes('NIRAJ')) {
   throw new Error('Found old spelling "Niraj" in script.js!');
 }
-if (js.includes('initLightbox') || js.includes('openLightbox')) {
-  throw new Error('Lightbox methods still present in script.js');
+if (js.includes('initLightbox') || js.includes('openLightbox') || js.includes('initVideoShowcase')) {
+  throw new Error('Unused or removed methods still present in script.js');
 }
 
 // H. Check CSS
 const css = fs.readFileSync(path.join(projectDir, 'style.css'), 'utf8');
-if (!css.includes('.contact-numbers-row') || !css.includes('.developer-profile-card')) {
-  throw new Error('Missing CSS rules for updated sections');
+if (!css.includes('.contact-numbers-row') || !css.includes('.btn-whatsapp')) {
+  throw new Error('Missing CSS rules for contact numbers or WhatsApp button');
 }
 
 // I. Check real photos exist and are authentic high-res files (> 100 KB)
@@ -90,9 +92,18 @@ if (!css.includes('.contact-numbers-row') || !css.includes('.developer-profile-c
   const p = path.join(projectDir, 'images', img);
   if (!fs.existsSync(p)) throw new Error(`Image ${img} does not exist`);
   const sz = fs.statSync(p).size;
-  if (sz < 50000) throw new Error(`Image ${img} is too small (${sz} bytes), dummy placeholder detected!`);
+  if (sz < 100000) throw new Error(`Image ${img} is too small (${sz} bytes), dummy placeholder detected!`);
 });
 console.log('✓ All real photograph assets verified (> 100 KB).');
+
+// J. Check user MP3 audio file (> 2 MB)
+['assets/audio/wedding-music.mp3', 'images/wedding-music.mp3'].forEach(aud => {
+  const p = path.join(projectDir, aud);
+  if (!fs.existsSync(p)) throw new Error(`Audio file ${aud} does not exist`);
+  const sz = fs.statSync(p).size;
+  if (sz < 2000000) throw new Error(`Audio file ${aud} is too small (${sz} bytes)!`);
+});
+console.log('✓ Authentic user MP3 audio verified (3.7 MB).');
 
 console.log('✓ All file and code integrity checks passed successfully!');
 

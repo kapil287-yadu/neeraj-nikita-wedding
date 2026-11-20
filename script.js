@@ -1,7 +1,7 @@
 /**
  * NEERAJ & NIKITA WEDDING - INTERACTIVE JAVASCRIPT
  * Bilingual Royal Experience • 10 - 12 December 2026 | Jaipur, Rajasthan
- * Developed by Kapil Yaduvanshi
+ * Designed & Developed by Kapil Tamoli
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,24 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveCountdown();
   initScheduleFilters();
   initMobileNav();
-  initVideoShowcase();
   initScrollAnimations();
 });
 
 /* ==========================================================================
-   1. DEVOTIONAL AUDIO EXPERIENCE (VAKRATUNDA MAHAKAYA)
+   1. DEVOTIONAL AUDIO EXPERIENCE (USER'S AUTHENTIC UPLOADED MP3 ONLY)
    ========================================================================== */
 let audioEl = null;
 let isAudioMuted = false;
-let audioContext = null;
-let softGainNode = null;
-let isAcousticPlaying = false;
 
 function initAudioExperience() {
   audioEl = document.getElementById('wedding-audio');
   if (!audioEl) return;
 
-  // Gentle default volume (25%)
+  // Set gentle default background volume
   audioEl.volume = 0.25;
   audioEl.loop = true;
 
@@ -40,18 +36,13 @@ function initAudioExperience() {
     isAudioMuted = false;
   }
 
-  // Gracefully handle any loading errors
-  audioEl.addEventListener('error', (e) => {
-    console.info('Audio playback ready for acoustic fallback.', e);
-  });
-
   const toggleBtn = document.getElementById('music-toggle-btn');
   if (toggleBtn) {
     toggleBtn.addEventListener('click', toggleMusic);
   }
 }
 
-// Starts ONLY upon clicking "Open Wedding Invitation"
+// Starts ONLY upon clicking "Enter Invitation" button
 function startDevotionalMusic() {
   if (!audioEl) return;
 
@@ -65,38 +56,28 @@ function startDevotionalMusic() {
     playPromise.then(() => {
       updateMusicUI(true);
     }).catch((err) => {
-      console.log('Audio file playback prevented or missing, starting soft acoustic fallback:', err);
-      startAcousticFallback();
-      updateMusicUI(true);
+      console.log('Audio autoplay policy note:', err);
+      updateMusicUI(false);
     });
   }
 }
 
 function toggleMusic() {
-  isAudioMuted = !isAudioMuted;
-  sessionStorage.setItem('wedding_music_muted', isAudioMuted);
+  if (!audioEl) return;
 
-  if (isAudioMuted) {
-    if (audioEl) audioEl.pause();
-    stopAcousticFallback();
+  if (!audioEl.paused) {
+    audioEl.pause();
+    isAudioMuted = true;
+    sessionStorage.setItem('wedding_music_muted', 'true');
     updateMusicUI(false);
   } else {
-    if (audioEl && audioEl.readyState >= 2) {
-      audioEl.play().then(() => {
-        updateMusicUI(true);
-      }).catch(() => {
-        startAcousticFallback();
-        updateMusicUI(true);
-      });
-    } else if (audioEl) {
-      audioEl.play().catch(() => {
-        startAcousticFallback();
-        updateMusicUI(true);
-      });
-    } else {
-      startAcousticFallback();
+    isAudioMuted = false;
+    sessionStorage.setItem('wedding_music_muted', 'false');
+    audioEl.play().then(() => {
       updateMusicUI(true);
-    }
+    }).catch(() => {
+      updateMusicUI(false);
+    });
   }
 }
 
@@ -109,56 +90,13 @@ function updateMusicUI(isPlaying) {
 
   if (isPlaying && !isAudioMuted) {
     toggleBtn.classList.remove('muted');
-    if (enLabel) enLabel.textContent = 'Vakratunda Mahakaya: ON';
-    if (hiLabel) hiLabel.textContent = 'वक्रतुण्ड महाकाय: चालू';
+    if (enLabel) enLabel.textContent = 'Music: ON';
+    if (hiLabel) hiLabel.textContent = 'संगीत: चालू';
   } else {
     toggleBtn.classList.add('muted');
     if (enLabel) enLabel.textContent = 'Music: OFF';
     if (hiLabel) hiLabel.textContent = 'संगीत: बंद';
   }
-}
-
-/* Soft Devotional Acoustic Fallback (Harmonic Raga Bhupali) */
-function startAcousticFallback() {
-  if (isAcousticPlaying) return;
-  try {
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtx) return;
-    if (!audioContext) audioContext = new AudioCtx();
-
-    if (audioContext.state === 'suspended') {
-      audioContext.resume();
-    }
-
-    softGainNode = audioContext.createGain();
-    softGainNode.gain.setValueAtTime(0.12, audioContext.currentTime);
-    softGainNode.connect(audioContext.destination);
-
-    // Warm, peaceful harmonics
-    const tones = [146.83, 220.00, 293.66, 369.99, 440.00];
-    tones.forEach((freq, idx) => {
-      const osc = audioContext.createOscillator();
-      const noteGain = audioContext.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, audioContext.currentTime);
-      noteGain.gain.setValueAtTime(0.18 / (idx + 1), audioContext.currentTime);
-      osc.connect(noteGain);
-      noteGain.connect(softGainNode);
-      osc.start();
-    });
-
-    isAcousticPlaying = true;
-  } catch (err) {
-    console.log('Acoustic fallback inactive', err);
-  }
-}
-
-function stopAcousticFallback() {
-  if (!isAcousticPlaying || !softGainNode) return;
-  try {
-    softGainNode.gain.setValueAtTime(0, audioContext.currentTime);
-    isAcousticPlaying = false;
-  } catch (e) {}
 }
 
 
@@ -198,48 +136,48 @@ function generateWelcomeParticles() {
     p.style.height = size + 'px';
     p.style.left = Math.random() * 100 + '%';
     p.style.top = Math.random() * 100 + '%';
-    p.style.animationDelay = (Math.random() * 5) + 's';
-    p.style.animationDuration = (Math.random() * 6 + 4) + 's';
+    p.style.animationDelay = (Math.random() * 8) + 's';
+    p.style.animationDuration = (Math.random() * 6 + 6) + 's';
+    p.style.opacity = (Math.random() * 0.6 + 0.3).toString();
     container.appendChild(p);
   }
 }
 
 
 /* ==========================================================================
-   3. LIVE COUNTDOWN TIMER TO 12 DECEMBER 2026
+   3. WEDDING COUNTDOWN TIMER (12 DECEMBER 2026)
    ========================================================================== */
 function initLiveCountdown() {
-  // Saturday, 12 December 2026, 11:00 AM IST
-  const weddingTime = new Date('2026-12-12T11:00:00+05:30').getTime();
+  const weddingDate = new Date('2026-12-12T11:00:00+05:30').getTime();
 
-  const daysEl = document.getElementById('days-val');
-  const hoursEl = document.getElementById('hours-val');
-  const minutesEl = document.getElementById('minutes-val');
-  const secondsEl = document.getElementById('seconds-val');
+  const daysEl = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minsEl = document.getElementById('cd-minutes');
+  const secsEl = document.getElementById('cd-seconds');
 
-  if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+  if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 
   function update() {
     const now = new Date().getTime();
-    const diff = weddingTime - now;
+    const distance = weddingDate - now;
 
-    if (diff <= 0) {
+    if (distance < 0) {
       daysEl.textContent = '00';
       hoursEl.textContent = '00';
-      minutesEl.textContent = '00';
-      secondsEl.textContent = '00';
+      minsEl.textContent = '00';
+      secsEl.textContent = '00';
       return;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-    daysEl.textContent = days < 10 ? '0' + days : days;
-    hoursEl.textContent = hours < 10 ? '0' + hours : hours;
-    minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
-    secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+    daysEl.textContent = String(days).padStart(2, '0');
+    hoursEl.textContent = String(hours).padStart(2, '0');
+    minsEl.textContent = String(mins).padStart(2, '0');
+    secsEl.textContent = String(secs).padStart(2, '0');
   }
 
   update();
@@ -248,35 +186,27 @@ function initLiveCountdown() {
 
 
 /* ==========================================================================
-   4. WEDDING EVENTS (ALL VISIBLE BY DEFAULT)
+   4. WEDDING SCHEDULE DAY-WISE FILTER TABS
    ========================================================================== */
 function initScheduleFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const dayClusters = document.querySelectorAll('.day-cluster-group');
+  const tabs = document.querySelectorAll('.schedule-tab-btn');
+  const dayGroups = document.querySelectorAll('.schedule-day-group');
 
-  if (!filterBtns.length || !dayClusters.length) return;
+  if (!tabs.length || !dayGroups.length) return;
 
-  // ALL clusters visible by default
-  dayClusters.forEach((cluster) => {
-    cluster.style.display = 'block';
-  });
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
 
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter');
+      const targetDay = tab.getAttribute('data-day');
 
-      filterBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      dayClusters.forEach((cluster) => {
-        if (filter === 'all') {
-          cluster.style.display = 'block';
+      dayGroups.forEach(group => {
+        if (targetDay === 'all' || group.getAttribute('data-day') === targetDay) {
+          group.style.display = 'block';
+          group.classList.add('tab-fade-in');
         } else {
-          if (cluster.getAttribute('data-cluster') === filter) {
-            cluster.style.display = 'block';
-          } else {
-            cluster.style.display = 'none';
-          }
+          group.style.display = 'none';
         }
       });
     });
@@ -285,59 +215,13 @@ function initScheduleFilters() {
 
 
 /* ==========================================================================
-   5. WEDDING VIDEO SHOWCASE SECTION
-   ========================================================================== */
-function initVideoShowcase() {
-  const video = document.getElementById('wedding-video-player');
-  const overlay = document.getElementById('video-custom-overlay');
-  const playBtn = document.getElementById('btn-play-video');
-
-  if (!video) return;
-
-  function handlePlayToggle() {
-    if (video.paused) {
-      video.play().then(() => {
-        if (overlay) overlay.classList.add('playing');
-        // Pause background music while video is playing so audio doesn't clash
-        if (audioEl && !audioEl.paused) {
-          audioEl.pause();
-        }
-      }).catch(err => console.log('Video play error:', err));
-    } else {
-      video.pause();
-      if (overlay) overlay.classList.remove('playing');
-      // Resume devotional background music
-      if (audioEl && !isAudioMuted) {
-        audioEl.play().catch(() => {});
-      }
-    }
-  }
-
-  if (playBtn) playBtn.addEventListener('click', handlePlayToggle);
-  if (overlay) overlay.addEventListener('click', handlePlayToggle);
-
-  video.addEventListener('play', () => {
-    if (overlay) overlay.classList.add('playing');
-    if (audioEl && !audioEl.paused) audioEl.pause();
-  });
-
-  video.addEventListener('pause', () => {
-    if (overlay) overlay.classList.remove('playing');
-    if (audioEl && !isAudioMuted) audioEl.play().catch(() => {});
-  });
-
-  video.addEventListener('ended', () => {
-    if (overlay) overlay.classList.remove('playing');
-    if (audioEl && !isAudioMuted) audioEl.play().catch(() => {});
-  });
-}
-
-
-/* ==========================================================================
-   6. SCROLL REVEAL ANIMATIONS
+   5. SCROLL REVEAL ANIMATIONS
    ========================================================================== */
 function initScrollAnimations() {
-  if (!('IntersectionObserver' in window)) return;
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -350,24 +234,17 @@ function initScrollAnimations() {
     rootMargin: '0px 0px -40px 0px'
   });
 
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-    observer.observe(el);
-  });
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 }
 
 
 /* ==========================================================================
-   7. ADD-TO-CALENDAR (GOOGLE CALENDAR & .ICS EXPORT)
+   6. CALENDAR EVENT HELPERS
    ========================================================================== */
 window.addToCalendar = function(title, startISO, endISO, location, details) {
-  const formatGCal = (isoStr) => {
-    const d = new Date(isoStr);
-    return d.toISOString().replace(/-|:|.ddd/g, '');
-  };
-
   const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-    'Neeraj & Nikita Wedding: ' + title
-  )}&dates=${formatGCal(startISO)}/${formatGCal(endISO)}&details=${encodeURIComponent(
+    title
+  )}&dates=${startISO}/${endISO}&details=${encodeURIComponent(
     details
   )}&location=${encodeURIComponent(location)}`;
 
@@ -468,7 +345,7 @@ window.downloadAllEventsICS = function() {
 
 
 /* ==========================================================================
-   8. VENUE ADDRESS COPY
+   7. VENUE ADDRESS COPY
    ========================================================================== */
 window.copyVenueAddress = function() {
   const addressText = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
@@ -498,7 +375,7 @@ window.copyVenueAddress = function() {
 
 
 /* ==========================================================================
-   9. MOBILE NAVIGATION MENU
+   8. MOBILE NAVIGATION MENU
    ========================================================================== */
 function initMobileNav() {
   const hamburger = document.getElementById('hamburger-btn');

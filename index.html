@@ -42,6 +42,15 @@
   <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
   
   <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
+  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
+  
+  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
+  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
+  
+  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
+  
+  
+  <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
   <link rel="stylesheet" href="style.css?v=20261121">
   <link rel="stylesheet" href="/style.css?v=20261121">
 
@@ -2234,23 +2243,101 @@ img {
   }
 }
 
+
+/* ==========================================================================
+   ENHANCED CONTACT ACTIONS & MONOGRAM STYLING
+   ========================================================================== */
+.welcome-monogram-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1.5px solid var(--antique-gold);
+  padding: 6px 20px;
+  border-radius: 30px;
+  background: rgba(198, 161, 91, 0.15);
+  margin-bottom: 14px;
+}
+
+.welcome-monogram-badge .monogram-letter {
+  font-family: var(--font-cinzel);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--antique-gold-light);
+  letter-spacing: 1px;
+}
+
+.welcome-monogram-badge .monogram-amp {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--antique-gold);
+}
+
+.contact-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 250px;
+  margin-top: 18px;
+}
+
+.btn-contact-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 25px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+  min-height: 44px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-contact-action.btn-call-now {
+  background: var(--soft-champagne);
+  border: 1.5px solid var(--antique-gold);
+  color: var(--plum-deep);
+}
+
+.btn-contact-action.btn-call-now:hover,
+.btn-contact-action.primary-call {
+  background: var(--grad-gold);
+  color: var(--plum-deep);
+  border-color: var(--antique-gold);
+  box-shadow: 0 4px 15px rgba(198, 161, 91, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-contact-action.btn-whatsapp {
+  background: #25D366;
+  border: 1.5px solid #20BD5A;
+  color: #FFF;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+
+.btn-contact-action.btn-whatsapp:hover {
+  background: #1EBE5D;
+  border-color: #1AA852;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+  transform: translateY(-2px);
+}
+
   </style>
-  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
-  <link rel="stylesheet" href="style.css">
-  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
-  
-  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
-  
 </head>
 <body class="welcome-locked">
 
   <!-- Peaceful Devotional Audio Player -->
   <audio id="wedding-audio" loop preload="auto">
-    <source src="assets/audio/vakratund-mahakay.mp3" type="audio/mpeg">
-    <source src="assets/audio/vakratund-mahakay.m4a" type="audio/mp4">
-    <source src="assets/audio/vakratunda-mahakaya.mp3" type="audio/mpeg">
-    <source src="images/vakratund-mahakay.mp3" type="audio/mpeg">
-    <source src="images/ganesh-mantra.mp3" type="audio/mpeg">
+    <source src="assets/audio/wedding-music.mp3?v=20261121" type="audio/mpeg">
+    <source src="assets/audio/vakratund-mahakay.mp3?v=20261121" type="audio/mpeg">
+    <source src="images/wedding-music.mp3?v=20261121" type="audio/mpeg">
+    <source src="images/ganesh-mantra.mp3?v=20261121" type="audio/mpeg">
   </audio>
 
   <!-- ==============================================
@@ -2284,6 +2371,13 @@ img {
           </svg>
         </div>
 
+        <!-- Royal N & N Monogram Crest -->
+        <div class="welcome-monogram-badge">
+          <span class="monogram-letter">N</span>
+          <span class="monogram-amp">&amp;</span>
+          <span class="monogram-letter">N</span>
+        </div>
+
         <div class="bilingual-line center-line">
           <span class="en-shloka">Vakratunda Mahakaya • वक्रतुण्ड महाकाय</span>
           <span class="hi-shloka">॥ श्री गणेशाय नमः ॥</span>
@@ -2311,15 +2405,15 @@ img {
           <span class="venue-hint">Tulsi Marriage Garden, Jaipur</span>
         </div>
 
-        <!-- Open Wedding Invitation Button -->
-        <button id="btn-enter-invitation" class="btn-enter-invitation" aria-label="Open Wedding Invitation">
-          <span class="btn-en">Open Wedding Invitation</span>
+        <!-- Enter Invitation Button -->
+        <button id="btn-enter-invitation" class="btn-enter-invitation" aria-label="Enter Wedding Invitation">
+          <span class="btn-en">Enter Invitation</span>
           <span class="btn-sep">|</span>
           <span class="btn-hi">निमंत्रण देखें</span>
           <span class="btn-arrow">⟶</span>
         </button>
 
-        <p class="welcome-audio-tip">Tap to enter &amp; experience devotional music (Vakratunda Mahakaya)</p>
+        <p class="welcome-audio-tip">Tap to enter &amp; experience wedding music</p>
 
       </div>
     </div>
@@ -2347,10 +2441,6 @@ img {
         <a href="#couple" class="nav-item">
           <span class="en-nav">The Couple</span>
           <span class="hi-nav">वर-वधू</span>
-        </a>
-        <a href="#wedding-film" class="nav-item">
-          <span class="en-nav">Wedding Film</span>
-          <span class="hi-nav">वीडियो</span>
         </a>
         <a href="#events" class="nav-item">
           <span class="en-nav">Wedding Events</span>
@@ -2504,11 +2594,11 @@ img {
           <div class="portrait-frame">
             <div class="portrait-img-box">
               <img 
-                src="images/groom-portrait.jpg?v=20261121" 
+                src="images/groom.jpg?v=20261121" 
                 alt="Neeraj - The Groom" 
                 class="portrait-img" 
                 loading="eager"
-                onerror="this.onerror=null; this.src='images/groom.jpg?v=20261121';"
+                onerror="this.onerror=null; this.src='images/groom-portrait.jpg?v=20261121';"
               >
             </div>
           </div>
@@ -2535,11 +2625,11 @@ img {
           <div class="portrait-frame">
             <div class="portrait-img-box">
               <img 
-                src="images/bride-seated.jpg?v=20261121" 
+                src="images/bride.jpg?v=20261121" 
                 alt="Nikita - The Bride" 
                 class="portrait-img" 
                 loading="eager"
-                onerror="this.onerror=null; this.src='images/bride.jpg?v=20261121';"
+                onerror="this.onerror=null; this.src='images/bride-seated.jpg?v=20261121';"
               >
             </div>
           </div>
@@ -2567,11 +2657,11 @@ img {
       <div class="couple-together-card reveal-on-scroll">
         <div class="together-media">
           <img 
-            src="images/couple-rings.jpg?v=20261121" 
+            src="images/couple.jpg?v=20261121" 
             alt="Neeraj and Nikita" 
             class="together-img" 
             loading="eager"
-            onerror="this.onerror=null; this.src='images/couple.jpg?v=20261121';"
+            onerror="this.onerror=null; this.src='images/couple-rings.jpg?v=20261121';"
           >
         </div>
         <div class="together-content text-center">
@@ -2593,56 +2683,7 @@ img {
 
 
     
-    <!-- ==============================================
-         5. OUR WEDDING FILM (CINEMATIC VIDEO SHOWCASE)
-         ============================================== -->
-    <section id="wedding-film" class="section-container video-showcase-section reveal-on-scroll">
-      <div class="section-title-wrap text-center">
-        <div class="royal-flourish">❦ ✦ ❦</div>
-        <h2 class="section-main-heading">
-          <span class="en-heading">Our Wedding Film</span>
-          <span class="hi-heading">पावन प्रेम स्मृति</span>
-        </h2>
-        <div class="gold-ornament-line">
-          <span></span><i>🎬</i><span></span>
-        </div>
-        <div class="video-lead-note-bilingual">
-          <p class="en-lead">A glimpse into our celebration of love and eternal togetherness</p>
-          <p class="hi-lead">दो दिलों के पावन मिलन एवं खुशियों के कुछ ख़ास पल</p>
-        </div>
-      </div>
-
-      <div class="video-wrapper-outer">
-        <div class="video-cinematic-frame">
-          <!-- Video Element with Poster -->
-          <video 
-            id="wedding-video-player" 
-            class="wedding-video-element" 
-            playsinline 
-            controls 
-            preload="metadata"
-            poster="images/hero-couple.jpg?v=20261121"
-          >
-            <source src="assets/video/wedding-film.mp4" type="video/mp4">
-            <source src="assets/video/wedding-highlights.mp4" type="video/mp4">
-            <p>Your browser does not support HTML5 video playback.</p>
-          </video>
-
-          <!-- Custom Play Button Overlay -->
-          <div id="video-custom-overlay" class="video-custom-overlay" title="Play Video • वीडियो देखें">
-            <div id="btn-play-video" class="video-play-disc" role="button" aria-label="Play Wedding Film">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div>
-            <div class="video-overlay-title-bilingual">
-              <span class="en-vtitle">Play Wedding Film</span>
-              <span class="hi-vtitle">पावन विवाह झलकियां देखें</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
 
     <!-- ==============================================
@@ -3200,79 +3241,61 @@ img {
         <div class="phone-contact-card reveal-on-scroll">
           <div class="phone-icon-wrap">📱</div>
           <div class="phone-digits-display">+91 9694786363</div>
-          <a href="tel:+919694786363" class="btn-call-now" aria-label="Call +91 9694786363">
-            <span class="call-icon">📞</span>
-            <span class="call-en">Call Now</span>
-            <span class="call-sep">|</span>
-            <span class="call-hi">कॉल करें</span>
-          </a>
+          <div class="contact-card-actions">
+            <a href="tel:+919694786363" class="btn-contact-action btn-call-now" aria-label="Call +91 9694786363">
+              <span class="call-icon">📞</span>
+              <span class="call-en">Call Now</span>
+              <span class="call-sep">|</span>
+              <span class="call-hi">कॉल करें</span>
+            </a>
+            <a href="https://wa.me/919694786363" class="btn-contact-action btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +91 9694786363">
+              <span class="call-icon">💬</span>
+              <span class="call-en">WhatsApp</span>
+            </a>
+          </div>
         </div>
 
         <!-- Number 2: +91 8824446601 -->
-        <div class="phone-contact-card highlight-card">
+        <div class="phone-contact-card highlight-card reveal-on-scroll">
           <div class="phone-icon-wrap">📱</div>
           <div class="phone-digits-display">+91 8824446601</div>
-          <a href="tel:+918824446601" class="btn-call-now primary-call" aria-label="Call +91 8824446601">
-            <span class="call-icon">📞</span>
-            <span class="call-en">Call Now</span>
-            <span class="call-sep">|</span>
-            <span class="call-hi">कॉल करें</span>
-          </a>
+          <div class="contact-card-actions">
+            <a href="tel:+918824446601" class="btn-contact-action btn-call-now primary-call" aria-label="Call +91 8824446601">
+              <span class="call-icon">📞</span>
+              <span class="call-en">Call Now</span>
+              <span class="call-sep">|</span>
+              <span class="call-hi">कॉल करें</span>
+            </a>
+            <a href="https://wa.me/918824446601" class="btn-contact-action btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +91 8824446601">
+              <span class="call-icon">💬</span>
+              <span class="call-en">WhatsApp</span>
+            </a>
+          </div>
         </div>
 
         <!-- Number 3: +91 7597117853 -->
         <div class="phone-contact-card reveal-on-scroll">
           <div class="phone-icon-wrap">📱</div>
           <div class="phone-digits-display">+91 7597117853</div>
-          <a href="tel:+917597117853" class="btn-call-now" aria-label="Call +91 7597117853">
-            <span class="call-icon">📞</span>
-            <span class="call-en">Call Now</span>
-            <span class="call-sep">|</span>
-            <span class="call-hi">कॉल करें</span>
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ==============================================
-         9. ABOUT THE DEVELOPER SECTION (KAPIL YADUVANSHI)
-         ============================================== -->
-    <section id="developer" class="section-container developer-showcase-section">
-      <div class="developer-box-container">
-        
-        <div class="developer-profile-card reveal-on-scroll">
-          <div class="dev-card-ornament top-ornament">❦ ✦ ❦</div>
-
-          <div class="dev-header-stack">
-            <span class="dev-kicker">Designed &amp; Developed With Love By</span>
-            <h2 class="dev-name-title">Kapil Yaduvanshi</h2>
-            <p class="dev-tagline-sub">The Creator Behind This Wedding Experience</p>
-          </div>
-
-          <div class="dev-story-text">
-            <p>
-              I am Kapil Yaduvanshi, the developer behind this digital wedding invitation. I designed and developed this website to transform a traditional wedding invitation into a beautiful, interactive and memorable digital experience.
-            </p>
-            <p>
-              From the visual design and animations to the interactive features, every detail has been thoughtfully crafted for Neeraj &amp; Nikita's special occasion.
-            </p>
-          </div>
-
-          <div class="dev-action-area">
-            <span class="dev-email-label">Developer Email:</span>
-            <a href="mailto:yaduvanshikapil287@gmail.com" class="btn-dev-email" aria-label="Email Kapil Yaduvanshi">
-              <span class="mail-icon">✉️</span>
-              <span class="mail-address">yaduvanshikapil287@gmail.com</span>
+          <div class="contact-card-actions">
+            <a href="tel:+917597117853" class="btn-contact-action btn-call-now" aria-label="Call +91 7597117853">
+              <span class="call-icon">📞</span>
+              <span class="call-en">Call Now</span>
+              <span class="call-sep">|</span>
+              <span class="call-hi">कॉल करें</span>
+            </a>
+            <a href="https://wa.me/917597117853" class="btn-contact-action btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +91 7597117853">
+              <span class="call-icon">💬</span>
+              <span class="call-en">WhatsApp</span>
             </a>
           </div>
-
-          <div class="dev-card-ornament bottom-ornament">✦ ❦ ✦</div>
         </div>
 
       </div>
     </section>
+
+
+    
 
   </main>
 
@@ -3298,9 +3321,9 @@ img {
         <p class="hi-note">पूज्य पूर्वजों एवं बड़ों के शुभाशीर्वाद से, समस्त परिवारजनों का सस्नेह नमन।</p>
       </div>
 
-      <!-- Mandatory Footer Credit -->
+      <!-- Small, Elegant Developer Credit -->
       <div class="footer-credit-line">
-        Crafted with ❤️ by Kapil Yaduvanshi
+        Designed &amp; Developed by Kapil Tamoli
       </div>
 
     </div>
@@ -3315,6 +3338,15 @@ img {
   <!-- External Script Fallbacks (Relative & Absolute) -->
   
   <!-- External Script Fallbacks (Relative & Absolute) -->
+  <!-- Production Inlined Interactive Logic -->
+  
+  <!-- Production Inlined Interactive Logic -->
+  <!-- Production Inlined Interactive Logic -->
+  
+  <!-- Production Inlined Interactive Logic -->
+  
+  
+  <!-- External Script Fallbacks (Relative & Absolute) -->
   <script src="script.js?v=20261121"></script>
   <script src="/script.js?v=20261121"></script>
 
@@ -3323,7 +3355,7 @@ img {
 /**
  * NEERAJ & NIKITA WEDDING - INTERACTIVE JAVASCRIPT
  * Bilingual Royal Experience • 10 - 12 December 2026 | Jaipur, Rajasthan
- * Developed by Kapil Yaduvanshi
+ * Designed & Developed by Kapil Tamoli
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -3332,24 +3364,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveCountdown();
   initScheduleFilters();
   initMobileNav();
-  initVideoShowcase();
   initScrollAnimations();
 });
 
 /* ==========================================================================
-   1. DEVOTIONAL AUDIO EXPERIENCE (VAKRATUNDA MAHAKAYA)
+   1. DEVOTIONAL AUDIO EXPERIENCE (USER'S AUTHENTIC UPLOADED MP3 ONLY)
    ========================================================================== */
 let audioEl = null;
 let isAudioMuted = false;
-let audioContext = null;
-let softGainNode = null;
-let isAcousticPlaying = false;
 
 function initAudioExperience() {
   audioEl = document.getElementById('wedding-audio');
   if (!audioEl) return;
 
-  // Gentle default volume (25%)
+  // Set gentle default background volume
   audioEl.volume = 0.25;
   audioEl.loop = true;
 
@@ -3362,18 +3390,13 @@ function initAudioExperience() {
     isAudioMuted = false;
   }
 
-  // Gracefully handle any loading errors
-  audioEl.addEventListener('error', (e) => {
-    console.info('Audio playback ready for acoustic fallback.', e);
-  });
-
   const toggleBtn = document.getElementById('music-toggle-btn');
   if (toggleBtn) {
     toggleBtn.addEventListener('click', toggleMusic);
   }
 }
 
-// Starts ONLY upon clicking "Open Wedding Invitation"
+// Starts ONLY upon clicking "Enter Invitation" button
 function startDevotionalMusic() {
   if (!audioEl) return;
 
@@ -3387,38 +3410,28 @@ function startDevotionalMusic() {
     playPromise.then(() => {
       updateMusicUI(true);
     }).catch((err) => {
-      console.log('Audio file playback prevented or missing, starting soft acoustic fallback:', err);
-      startAcousticFallback();
-      updateMusicUI(true);
+      console.log('Audio autoplay policy note:', err);
+      updateMusicUI(false);
     });
   }
 }
 
 function toggleMusic() {
-  isAudioMuted = !isAudioMuted;
-  sessionStorage.setItem('wedding_music_muted', isAudioMuted);
+  if (!audioEl) return;
 
-  if (isAudioMuted) {
-    if (audioEl) audioEl.pause();
-    stopAcousticFallback();
+  if (!audioEl.paused) {
+    audioEl.pause();
+    isAudioMuted = true;
+    sessionStorage.setItem('wedding_music_muted', 'true');
     updateMusicUI(false);
   } else {
-    if (audioEl && audioEl.readyState >= 2) {
-      audioEl.play().then(() => {
-        updateMusicUI(true);
-      }).catch(() => {
-        startAcousticFallback();
-        updateMusicUI(true);
-      });
-    } else if (audioEl) {
-      audioEl.play().catch(() => {
-        startAcousticFallback();
-        updateMusicUI(true);
-      });
-    } else {
-      startAcousticFallback();
+    isAudioMuted = false;
+    sessionStorage.setItem('wedding_music_muted', 'false');
+    audioEl.play().then(() => {
       updateMusicUI(true);
-    }
+    }).catch(() => {
+      updateMusicUI(false);
+    });
   }
 }
 
@@ -3431,56 +3444,13 @@ function updateMusicUI(isPlaying) {
 
   if (isPlaying && !isAudioMuted) {
     toggleBtn.classList.remove('muted');
-    if (enLabel) enLabel.textContent = 'Vakratunda Mahakaya: ON';
-    if (hiLabel) hiLabel.textContent = 'वक्रतुण्ड महाकाय: चालू';
+    if (enLabel) enLabel.textContent = 'Music: ON';
+    if (hiLabel) hiLabel.textContent = 'संगीत: चालू';
   } else {
     toggleBtn.classList.add('muted');
     if (enLabel) enLabel.textContent = 'Music: OFF';
     if (hiLabel) hiLabel.textContent = 'संगीत: बंद';
   }
-}
-
-/* Soft Devotional Acoustic Fallback (Harmonic Raga Bhupali) */
-function startAcousticFallback() {
-  if (isAcousticPlaying) return;
-  try {
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtx) return;
-    if (!audioContext) audioContext = new AudioCtx();
-
-    if (audioContext.state === 'suspended') {
-      audioContext.resume();
-    }
-
-    softGainNode = audioContext.createGain();
-    softGainNode.gain.setValueAtTime(0.12, audioContext.currentTime);
-    softGainNode.connect(audioContext.destination);
-
-    // Warm, peaceful harmonics
-    const tones = [146.83, 220.00, 293.66, 369.99, 440.00];
-    tones.forEach((freq, idx) => {
-      const osc = audioContext.createOscillator();
-      const noteGain = audioContext.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, audioContext.currentTime);
-      noteGain.gain.setValueAtTime(0.18 / (idx + 1), audioContext.currentTime);
-      osc.connect(noteGain);
-      noteGain.connect(softGainNode);
-      osc.start();
-    });
-
-    isAcousticPlaying = true;
-  } catch (err) {
-    console.log('Acoustic fallback inactive', err);
-  }
-}
-
-function stopAcousticFallback() {
-  if (!isAcousticPlaying || !softGainNode) return;
-  try {
-    softGainNode.gain.setValueAtTime(0, audioContext.currentTime);
-    isAcousticPlaying = false;
-  } catch (e) {}
 }
 
 
@@ -3520,48 +3490,48 @@ function generateWelcomeParticles() {
     p.style.height = size + 'px';
     p.style.left = Math.random() * 100 + '%';
     p.style.top = Math.random() * 100 + '%';
-    p.style.animationDelay = (Math.random() * 5) + 's';
-    p.style.animationDuration = (Math.random() * 6 + 4) + 's';
+    p.style.animationDelay = (Math.random() * 8) + 's';
+    p.style.animationDuration = (Math.random() * 6 + 6) + 's';
+    p.style.opacity = (Math.random() * 0.6 + 0.3).toString();
     container.appendChild(p);
   }
 }
 
 
 /* ==========================================================================
-   3. LIVE COUNTDOWN TIMER TO 12 DECEMBER 2026
+   3. WEDDING COUNTDOWN TIMER (12 DECEMBER 2026)
    ========================================================================== */
 function initLiveCountdown() {
-  // Saturday, 12 December 2026, 11:00 AM IST
-  const weddingTime = new Date('2026-12-12T11:00:00+05:30').getTime();
+  const weddingDate = new Date('2026-12-12T11:00:00+05:30').getTime();
 
-  const daysEl = document.getElementById('days-val');
-  const hoursEl = document.getElementById('hours-val');
-  const minutesEl = document.getElementById('minutes-val');
-  const secondsEl = document.getElementById('seconds-val');
+  const daysEl = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minsEl = document.getElementById('cd-minutes');
+  const secsEl = document.getElementById('cd-seconds');
 
-  if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+  if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
 
   function update() {
     const now = new Date().getTime();
-    const diff = weddingTime - now;
+    const distance = weddingDate - now;
 
-    if (diff <= 0) {
+    if (distance < 0) {
       daysEl.textContent = '00';
       hoursEl.textContent = '00';
-      minutesEl.textContent = '00';
-      secondsEl.textContent = '00';
+      minsEl.textContent = '00';
+      secsEl.textContent = '00';
       return;
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-    daysEl.textContent = days < 10 ? '0' + days : days;
-    hoursEl.textContent = hours < 10 ? '0' + hours : hours;
-    minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
-    secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+    daysEl.textContent = String(days).padStart(2, '0');
+    hoursEl.textContent = String(hours).padStart(2, '0');
+    minsEl.textContent = String(mins).padStart(2, '0');
+    secsEl.textContent = String(secs).padStart(2, '0');
   }
 
   update();
@@ -3570,35 +3540,27 @@ function initLiveCountdown() {
 
 
 /* ==========================================================================
-   4. WEDDING EVENTS (ALL VISIBLE BY DEFAULT)
+   4. WEDDING SCHEDULE DAY-WISE FILTER TABS
    ========================================================================== */
 function initScheduleFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const dayClusters = document.querySelectorAll('.day-cluster-group');
+  const tabs = document.querySelectorAll('.schedule-tab-btn');
+  const dayGroups = document.querySelectorAll('.schedule-day-group');
 
-  if (!filterBtns.length || !dayClusters.length) return;
+  if (!tabs.length || !dayGroups.length) return;
 
-  // ALL clusters visible by default
-  dayClusters.forEach((cluster) => {
-    cluster.style.display = 'block';
-  });
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
 
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter');
+      const targetDay = tab.getAttribute('data-day');
 
-      filterBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      dayClusters.forEach((cluster) => {
-        if (filter === 'all') {
-          cluster.style.display = 'block';
+      dayGroups.forEach(group => {
+        if (targetDay === 'all' || group.getAttribute('data-day') === targetDay) {
+          group.style.display = 'block';
+          group.classList.add('tab-fade-in');
         } else {
-          if (cluster.getAttribute('data-cluster') === filter) {
-            cluster.style.display = 'block';
-          } else {
-            cluster.style.display = 'none';
-          }
+          group.style.display = 'none';
         }
       });
     });
@@ -3607,59 +3569,13 @@ function initScheduleFilters() {
 
 
 /* ==========================================================================
-   5. WEDDING VIDEO SHOWCASE SECTION
-   ========================================================================== */
-function initVideoShowcase() {
-  const video = document.getElementById('wedding-video-player');
-  const overlay = document.getElementById('video-custom-overlay');
-  const playBtn = document.getElementById('btn-play-video');
-
-  if (!video) return;
-
-  function handlePlayToggle() {
-    if (video.paused) {
-      video.play().then(() => {
-        if (overlay) overlay.classList.add('playing');
-        // Pause background music while video is playing so audio doesn't clash
-        if (audioEl && !audioEl.paused) {
-          audioEl.pause();
-        }
-      }).catch(err => console.log('Video play error:', err));
-    } else {
-      video.pause();
-      if (overlay) overlay.classList.remove('playing');
-      // Resume devotional background music
-      if (audioEl && !isAudioMuted) {
-        audioEl.play().catch(() => {});
-      }
-    }
-  }
-
-  if (playBtn) playBtn.addEventListener('click', handlePlayToggle);
-  if (overlay) overlay.addEventListener('click', handlePlayToggle);
-
-  video.addEventListener('play', () => {
-    if (overlay) overlay.classList.add('playing');
-    if (audioEl && !audioEl.paused) audioEl.pause();
-  });
-
-  video.addEventListener('pause', () => {
-    if (overlay) overlay.classList.remove('playing');
-    if (audioEl && !isAudioMuted) audioEl.play().catch(() => {});
-  });
-
-  video.addEventListener('ended', () => {
-    if (overlay) overlay.classList.remove('playing');
-    if (audioEl && !isAudioMuted) audioEl.play().catch(() => {});
-  });
-}
-
-
-/* ==========================================================================
-   6. SCROLL REVEAL ANIMATIONS
+   5. SCROLL REVEAL ANIMATIONS
    ========================================================================== */
 function initScrollAnimations() {
-  if (!('IntersectionObserver' in window)) return;
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -3672,24 +3588,17 @@ function initScrollAnimations() {
     rootMargin: '0px 0px -40px 0px'
   });
 
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
-    observer.observe(el);
-  });
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 }
 
 
 /* ==========================================================================
-   7. ADD-TO-CALENDAR (GOOGLE CALENDAR & .ICS EXPORT)
+   6. CALENDAR EVENT HELPERS
    ========================================================================== */
 window.addToCalendar = function(title, startISO, endISO, location, details) {
-  const formatGCal = (isoStr) => {
-    const d = new Date(isoStr);
-    return d.toISOString().replace(/-|:|.ddd/g, '');
-  };
-
   const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-    'Neeraj & Nikita Wedding: ' + title
-  )}&dates=${formatGCal(startISO)}/${formatGCal(endISO)}&details=${encodeURIComponent(
+    title
+  )}&dates=${startISO}/${endISO}&details=${encodeURIComponent(
     details
   )}&location=${encodeURIComponent(location)}`;
 
@@ -3790,7 +3699,7 @@ window.downloadAllEventsICS = function() {
 
 
 /* ==========================================================================
-   8. VENUE ADDRESS COPY
+   7. VENUE ADDRESS COPY
    ========================================================================== */
 window.copyVenueAddress = function() {
   const addressText = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
@@ -3820,7 +3729,7 @@ window.copyVenueAddress = function() {
 
 
 /* ==========================================================================
-   9. MOBILE NAVIGATION MENU
+   8. MOBILE NAVIGATION MENU
    ========================================================================== */
 function initMobileNav() {
   const hamburger = document.getElementById('hamburger-btn');
@@ -3841,11 +3750,5 @@ function initMobileNav() {
 }
 
   </script>
-  <!-- Production Inlined Interactive Logic -->
-  <script src="script.js"></script>
-  <!-- Production Inlined Interactive Logic -->
-  
-  <!-- Production Inlined Interactive Logic -->
-  
 </body>
 </html>
