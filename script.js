@@ -10,10 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveCountdown();
   initScheduleFilters();
   initMobileNav();
+  initVideoShowcase();
+  initScrollAnimations();
 });
 
 /* ==========================================================================
-   1. DEVOTIONAL AUDIO EXPERIENCE
+   1. DEVOTIONAL AUDIO EXPERIENCE (VAKRATUNDA MAHAKAYA)
    ========================================================================== */
 let audioEl = null;
 let isAudioMuted = false;
@@ -25,8 +27,8 @@ function initAudioExperience() {
   audioEl = document.getElementById('wedding-audio');
   if (!audioEl) return;
 
-  // Gentle low default volume (15%)
-  audioEl.volume = 0.15;
+  // Gentle default volume (25%)
+  audioEl.volume = 0.25;
   audioEl.loop = true;
 
   // Check saved session mute preference
@@ -49,7 +51,7 @@ function initAudioExperience() {
   }
 }
 
-// Starts ONLY upon clicking "Enter Invitation"
+// Starts ONLY upon clicking "Open Wedding Invitation"
 function startDevotionalMusic() {
   if (!audioEl) return;
 
@@ -83,6 +85,11 @@ function toggleMusic() {
       audioEl.play().then(() => {
         updateMusicUI(true);
       }).catch(() => {
+        startAcousticFallback();
+        updateMusicUI(true);
+      });
+    } else if (audioEl) {
+      audioEl.play().catch(() => {
         startAcousticFallback();
         updateMusicUI(true);
       });
@@ -156,24 +163,45 @@ function stopAcousticFallback() {
 
 
 /* ==========================================================================
-   2. WELCOME MODAL / GATEWAY
+   2. CINEMATIC WELCOME GATEWAY & PARTICLES
    ========================================================================== */
 function initWelcomeGateway() {
   const enterBtn = document.getElementById('btn-enter-invitation');
   const gateway = document.getElementById('welcome-gateway');
   const body = document.body;
 
+  generateWelcomeParticles();
+
   if (!enterBtn || !gateway) return;
 
   enterBtn.addEventListener('click', () => {
     startDevotionalMusic();
-    gateway.classList.add('opened');
+    gateway.classList.add('cinematic-opened');
     body.classList.remove('welcome-locked');
 
     setTimeout(() => {
       gateway.style.display = 'none';
-    }, 750);
+    }, 900);
   });
+}
+
+function generateWelcomeParticles() {
+  const container = document.getElementById('welcome-particles-wrap');
+  if (!container) return;
+
+  const count = window.innerWidth < 768 ? 20 : 35;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('span');
+    p.className = 'gold-dust-particle';
+    const size = Math.random() * 4 + 2;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.top = Math.random() * 100 + '%';
+    p.style.animationDelay = (Math.random() * 5) + 's';
+    p.style.animationDuration = (Math.random() * 6 + 4) + 's';
+    container.appendChild(p);
+  }
 }
 
 
@@ -257,12 +285,84 @@ function initScheduleFilters() {
 
 
 /* ==========================================================================
-   5. ADD-TO-CALENDAR (GOOGLE CALENDAR & .ICS EXPORT)
+   5. WEDDING VIDEO SHOWCASE SECTION
+   ========================================================================== */
+function initVideoShowcase() {
+  const video = document.getElementById('wedding-video-player');
+  const overlay = document.getElementById('video-custom-overlay');
+  const playBtn = document.getElementById('btn-play-video');
+
+  if (!video) return;
+
+  function handlePlayToggle() {
+    if (video.paused) {
+      video.play().then(() => {
+        if (overlay) overlay.classList.add('playing');
+        // Pause background music while video is playing so audio doesn't clash
+        if (audioEl && !audioEl.paused) {
+          audioEl.pause();
+        }
+      }).catch(err => console.log('Video play error:', err));
+    } else {
+      video.pause();
+      if (overlay) overlay.classList.remove('playing');
+      // Resume devotional background music
+      if (audioEl && !isAudioMuted) {
+        audioEl.play().catch(() => {});
+      }
+    }
+  }
+
+  if (playBtn) playBtn.addEventListener('click', handlePlayToggle);
+  if (overlay) overlay.addEventListener('click', handlePlayToggle);
+
+  video.addEventListener('play', () => {
+    if (overlay) overlay.classList.add('playing');
+    if (audioEl && !audioEl.paused) audioEl.pause();
+  });
+
+  video.addEventListener('pause', () => {
+    if (overlay) overlay.classList.remove('playing');
+    if (audioEl && !isAudioMuted) audioEl.play().catch(() => {});
+  });
+
+  video.addEventListener('ended', () => {
+    if (overlay) overlay.classList.remove('playing');
+    if (audioEl && !isAudioMuted) audioEl.play().catch(() => {});
+  });
+}
+
+
+/* ==========================================================================
+   6. SCROLL REVEAL ANIMATIONS
+   ========================================================================== */
+function initScrollAnimations() {
+  if (!('IntersectionObserver' in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+
+/* ==========================================================================
+   7. ADD-TO-CALENDAR (GOOGLE CALENDAR & .ICS EXPORT)
    ========================================================================== */
 window.addToCalendar = function(title, startISO, endISO, location, details) {
   const formatGCal = (isoStr) => {
     const d = new Date(isoStr);
-    return d.toISOString().replace(/-|:|\.\d\d\d/g, '');
+    return d.toISOString().replace(/-|:|.ddd/g, '');
   };
 
   const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
@@ -368,7 +468,7 @@ window.downloadAllEventsICS = function() {
 
 
 /* ==========================================================================
-   6. VENUE ADDRESS COPY
+   8. VENUE ADDRESS COPY
    ========================================================================== */
 window.copyVenueAddress = function() {
   const addressText = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
@@ -398,7 +498,7 @@ window.copyVenueAddress = function() {
 
 
 /* ==========================================================================
-   7. MOBILE NAVIGATION MENU
+   9. MOBILE NAVIGATION MENU
    ========================================================================== */
 function initMobileNav() {
   const hamburger = document.getElementById('hamburger-btn');
@@ -417,5 +517,3 @@ function initMobileNav() {
     });
   });
 }
-
-

@@ -22,8 +22,8 @@ html = html.replace(/<script id="royal-wedding-script">[\s\S]*?<\/script>/, '');
 // 3. Inject CSS into <head> with both external link fallbacks and inlined stylesheet
 const styleBlock = `
   <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="style.css?v=20261121">
+  <link rel="stylesheet" href="/style.css?v=20261121">
 
   <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
   <style id="royal-wedding-styles">
@@ -35,8 +35,8 @@ html = html.replace(/<link rel="stylesheet" href="style\.css">/, styleBlock);
 // 4. Inject JS before </body> with both external script fallbacks and inlined script
 const scriptBlock = `
   <!-- External Script Fallbacks (Relative & Absolute) -->
-  <script src="script.js"></script>
-  <script src="/script.js"></script>
+  <script src="script.js?v=20261121"></script>
+  <script src="/script.js?v=20261121"></script>
 
   <!-- Production Inlined Interactive Logic -->
   <script id="royal-wedding-script">
@@ -59,7 +59,7 @@ pkg.scripts = {
 fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2), 'utf8');
 console.log('✓ package.json updated: "main" field removed to force static edge CDN delivery.');
 
-// 6. Update vercel.json (Explicit static configuration without legacy version 2 builder)
+// 6. Update vercel.json (Explicit static configuration without caching stale assets)
 const vercelConfig = {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "",
@@ -77,11 +77,11 @@ const vercelConfig = {
       ]
     },
     {
-      "source": "/(.*)\\.(css|js|svg|jpg|jpeg|png|mp3|woff2)",
+      "source": "/(.*)\\.(css|js|svg|jpg|jpeg|png|mp3|m4a|mp4|woff2)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     }
