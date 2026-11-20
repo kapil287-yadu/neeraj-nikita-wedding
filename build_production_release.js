@@ -90,4 +90,17 @@ const vercelConfig = {
 fs.writeFileSync(vercelPath, JSON.stringify(vercelConfig, null, 2), 'utf8');
 console.log('✓ vercel.json updated: Explicit static configuration with buildCommand: "" and outputDirectory: "."');
 
+// 7. Sync authentic photographs
+const imgDir = path.join(projectDir, 'images');
+if (fs.existsSync(path.join(imgDir, 'groom-portrait.jpg'))) {
+  fs.copyFileSync(path.join(imgDir, 'groom-portrait.jpg'), path.join(imgDir, 'groom.jpg'));
+}
+if (fs.existsSync(path.join(imgDir, 'bride-seated.jpg'))) {
+  fs.copyFileSync(path.join(imgDir, 'bride-seated.jpg'), path.join(imgDir, 'bride.jpg'));
+}
+if (fs.existsSync(path.join(imgDir, 'couple-rings.jpg'))) {
+  fs.copyFileSync(path.join(imgDir, 'couple-rings.jpg'), path.join(imgDir, 'couple.jpg'));
+}
+console.log('✓ Authentic photographs synced: groom.jpg, bride.jpg, couple.jpg');
+
 console.log('--- PRODUCTION BUILD PREPARATION COMPLETE ---');

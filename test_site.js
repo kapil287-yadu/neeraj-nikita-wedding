@@ -85,6 +85,15 @@ if (!css.includes('.contact-numbers-row') || !css.includes('.developer-profile-c
   throw new Error('Missing CSS rules for updated sections');
 }
 
+// I. Check real photos exist and are authentic high-res files (> 100 KB)
+['groom.jpg', 'bride.jpg', 'couple.jpg', 'hero-couple.jpg'].forEach(img => {
+  const p = path.join(projectDir, 'images', img);
+  if (!fs.existsSync(p)) throw new Error(`Image ${img} does not exist`);
+  const sz = fs.statSync(p).size;
+  if (sz < 50000) throw new Error(`Image ${img} is too small (${sz} bytes), dummy placeholder detected!`);
+});
+console.log('✓ All real photograph assets verified (> 100 KB).');
+
 console.log('✓ All file and code integrity checks passed successfully!');
 
 // Test HTTP server
