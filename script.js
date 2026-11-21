@@ -1,22 +1,22 @@
 /**
- * NEERAJ & NIKITA WEDDING - INTERACTIVE JAVASCRIPT
- * Bilingual Royal Experience • 10 - 12 December 2026 | Jaipur, Rajasthan
- * Designed & Developed by Kapil Yaduvanshi
+ * NIRAJ & NIKITA ROYAL WEDDING - INTERACTIVE JAVASCRIPT
+ * Royal Rajasthani Palace Experience • 10 - 12 December 2026 | Jaipur, Rajasthan
+ * Designed & Developed by Kapil Yaduvanshi (yaduvanshikapil287@gmail.com)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initAudioExperience();
-  initWelcomeGateway();
+  initRoyalPalaceGate();
+  initAutoScrollHoldToPause();
+  initContinuousHeroIndicator();
   initLiveCountdown();
   initScheduleFilters();
   initMobileNav();
   initScrollAnimations();
-  initAutoScroll();
-  initContinuousHeroIndicator();
 });
 
 /* ==========================================================================
-   1. DEVOTIONAL AUDIO EXPERIENCE (USER'S AUTHENTIC UPLOADED MP3 ONLY)
+   1. BACKGROUND AUDIO EXPERIENCE (USER'S LATEST WEDDING MUSIC TRACK ONLY)
    ========================================================================== */
 let audioEl = null;
 let isAudioMuted = false;
@@ -25,11 +25,9 @@ function initAudioExperience() {
   audioEl = document.getElementById('wedding-audio');
   if (!audioEl) return;
 
-  // Set gentle default background volume
   audioEl.volume = 0.28;
   audioEl.loop = true;
 
-  // Check saved session mute preference
   const savedMute = sessionStorage.getItem('wedding_music_muted');
   if (savedMute === 'true') {
     isAudioMuted = true;
@@ -44,7 +42,6 @@ function initAudioExperience() {
   }
 }
 
-// Starts ONLY upon clicking "Enter Invitation" button
 function startDevotionalMusic() {
   if (!audioEl) return;
 
@@ -103,45 +100,67 @@ function updateMusicUI(isPlaying) {
 
 
 /* ==========================================================================
-   2. CINEMATIC WELCOME GATEWAY & PARTICLES
+   2. ROYAL RAJASTHANI PALACE GATE OPENING ANIMATION
    ========================================================================== */
-function initWelcomeGateway() {
-  const enterBtn = document.getElementById('btn-enter-invitation');
-  const gateway = document.getElementById('welcome-gateway');
+let isGateOpened = false;
+
+function initRoyalPalaceGate() {
+  const gateScreen = document.getElementById('welcome-gateway');
+  const tapCta = document.getElementById('emblem-tap-cta');
   const body = document.body;
 
-  generateWelcomeParticles();
+  generatePalaceSparks();
 
-  if (!enterBtn || !gateway) return;
+  if (!gateScreen) return;
 
-  enterBtn.addEventListener('click', () => {
+  function openRoyalGate(e) {
+    if (isGateOpened) return;
+    isGateOpened = true;
+
+    // Start background music immediately upon user interaction
     startDevotionalMusic();
-    gateway.classList.add('cinematic-opened');
-    body.classList.remove('welcome-locked');
 
+    // Trigger 3D door swing, golden light radiance and emblem dissolve
+    gateScreen.classList.add('gate-opening');
+
+    // Smooth transition: doors swing open for ~1.6s, then screen fades out
     setTimeout(() => {
-      gateway.style.display = 'none';
-      // Trigger slow auto-scroll after opening the main invitation
-      startAutoScroll();
-    }, 1100);
-  });
+      body.classList.remove('welcome-locked');
+      gateScreen.classList.add('gate-hidden');
+
+      setTimeout(() => {
+        gateScreen.style.display = 'none';
+        // Start polished slow automatic scrolling right after gate transition
+        startAutoScroll();
+      }, 400);
+    }, 1600);
+  }
+
+  // Tapping anywhere on the gate or the TAP TO OPEN text triggers opening
+  gateScreen.addEventListener('click', openRoyalGate);
+  if (tapCta) {
+    tapCta.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openRoyalGate(e);
+    });
+  }
 }
 
-function generateWelcomeParticles() {
-  const container = document.getElementById('welcome-particles-wrap');
+function generatePalaceSparks() {
+  const container = document.getElementById('palace-sparks-wrap');
   if (!container) return;
 
-  const count = window.innerWidth < 768 ? 20 : 35;
+  const count = window.innerWidth < 768 ? 18 : 32;
   for (let i = 0; i < count; i++) {
     const p = document.createElement('span');
-    p.className = 'gold-dust-particle';
+    p.className = 'gold-sparkle-dot';
     const size = Math.random() * 4 + 2;
     p.style.width = size + 'px';
     p.style.height = size + 'px';
     p.style.left = Math.random() * 100 + '%';
     p.style.top = Math.random() * 100 + '%';
-    p.style.animationDelay = (Math.random() * 8) + 's';
-    p.style.animationDuration = (Math.random() * 6 + 6) + 's';
+    p.style.animationDelay = (Math.random() * 7) + 's';
+    p.style.animationDuration = (Math.random() * 5 + 5) + 's';
     p.style.opacity = (Math.random() * 0.6 + 0.3).toString();
     container.appendChild(p);
   }
@@ -149,120 +168,110 @@ function generateWelcomeParticles() {
 
 
 /* ==========================================================================
-   3. AUTOMATIC SLOW SCROLL EXPERIENCE WITH FULL USER CONTROL
+   3. POLISHED AUTOMATIC SCROLL — HOLD TO PAUSE & SWIPE TO RESUME
    ========================================================================== */
 let isAutoScrollActive = false;
-let isAutoScrollPaused = false;
+let isHoldingFinger = false;
+let isManualInteracting = false;
+let resumeTimeoutId = null;
 let autoScrollRafId = null;
 let autoScrollAccumulator = 0;
-const AUTO_SCROLL_SPEED = 0.68; // Smooth reading pace (~40px/sec)
+// 25 - 35 pixels per second: ~0.50 px per frame at 60fps = 30 px/sec
+const AUTO_SCROLL_SPEED = 0.50;
 
-function initAutoScroll() {
-  const controller = document.getElementById('auto-scroll-controller');
-  if (!controller) return;
-
-  controller.addEventListener('click', () => {
-    if (isAutoScrollPaused) {
-      resumeAutoScroll();
-    } else {
-      pauseAutoScroll();
-    }
-  });
-
-  // User manual interaction listeners: touching, swiping, or scrolling immediately pauses auto-scroll
-  const pauseOnUserAction = (e) => {
-    // Ignore clicks directly on controller itself or top actions
-    if (e.target && e.target.closest && (
-      e.target.closest('#auto-scroll-controller') ||
-      e.target.closest('#music-toggle-btn') ||
-      e.target.closest('#hamburger-btn')
-    )) {
-      return;
-    }
-
-    if (isAutoScrollActive && !isAutoScrollPaused) {
-      pauseAutoScroll();
-    }
-  };
-
-  window.addEventListener('touchstart', pauseOnUserAction, { passive: true });
-  window.addEventListener('wheel', pauseOnUserAction, { passive: true });
-  window.addEventListener('pointerdown', pauseOnUserAction, { passive: true });
-  window.addEventListener('keydown', (e) => {
-    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Space'].includes(e.code)) {
-      pauseOnUserAction(e);
-    }
-  }, { passive: true });
-
-  // Navigation items and buttons should pause auto-scroll gracefully
-  document.querySelectorAll('.nav-item, .btn-contact-action, .schedule-tab-btn, .btn-explore-invitation').forEach(el => {
-    el.addEventListener('click', () => {
-      if (isAutoScrollActive && !isAutoScrollPaused) {
-        pauseAutoScroll();
-      }
-    });
-  });
-}
-
-function startAutoScroll() {
+function initAutoScrollHoldToPause() {
   // Respect reduced-motion accessibility preference
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
-  const controller = document.getElementById('auto-scroll-controller');
-  if (controller) {
-    controller.style.display = 'inline-flex';
+  // HOLD TO PAUSE: Pressing & holding a finger anywhere on content pauses immediately
+  const onHoldStart = (e) => {
+    // Never interfere with interactive controls (buttons, links, inputs, maps, audio)
+    if (e.target && e.target.closest && e.target.closest('a, button, input, iframe, select, textarea, .nav-item, #music-toggle-btn')) {
+      return;
+    }
+    isHoldingFinger = true;
+  };
+
+  // RELEASE TO RESUME: When finger is released, resume from exact position
+  const onHoldEnd = () => {
+    if (isHoldingFinger) {
+      isHoldingFinger = false;
+      if (isAutoScrollActive && !isManualInteracting && !autoScrollRafId) {
+        autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+      }
+    }
+  };
+
+  window.addEventListener('touchstart', onHoldStart, { passive: true });
+  window.addEventListener('touchend', onHoldEnd, { passive: true });
+  window.addEventListener('touchcancel', onHoldEnd, { passive: true });
+
+  window.addEventListener('pointerdown', onHoldStart, { passive: true });
+  window.addEventListener('pointerup', onHoldEnd, { passive: true });
+  window.addEventListener('pointercancel', onHoldEnd, { passive: true });
+
+  window.addEventListener('mousedown', onHoldStart, { passive: true });
+  window.addEventListener('mouseup', onHoldEnd, { passive: true });
+
+  // MANUAL SWIPING: Smoothly pause during manual scrolling, resume after a short delay
+  const onManualSwipe = (e) => {
+    isManualInteracting = true;
+    if (resumeTimeoutId) clearTimeout(resumeTimeoutId);
+
+    // Resume scrolling smoothly 1.4s after the guest finishes swiping
+    resumeTimeoutId = setTimeout(() => {
+      isManualInteracting = false;
+      if (isAutoScrollActive && !isHoldingFinger && !autoScrollRafId) {
+        autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+      }
+    }, 1400);
+  };
+
+  window.addEventListener('wheel', onManualSwipe, { passive: true });
+  window.addEventListener('touchmove', onManualSwipe, { passive: true });
+
+  // Prevent auto-scroll disruption during explicit button / nav navigation
+  document.querySelectorAll('.nav-item, .btn-contact-action, .schedule-tab-btn, .btn-explore-invitation').forEach(el => {
+    el.addEventListener('click', () => {
+      isManualInteracting = true;
+      if (resumeTimeoutId) clearTimeout(resumeTimeoutId);
+      resumeTimeoutId = setTimeout(() => {
+        isManualInteracting = false;
+        if (isAutoScrollActive && !isHoldingFinger && !autoScrollRafId) {
+          autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+        }
+      }, 2000);
+    });
+  });
+}
+
+function startAutoScroll() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
   }
 
   isAutoScrollActive = true;
-  isAutoScrollPaused = false;
+  isHoldingFinger = false;
+  isManualInteracting = false;
   autoScrollAccumulator = 0;
-  updateAutoScrollUI(true);
 
   if (autoScrollRafId) cancelAnimationFrame(autoScrollRafId);
   autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
-}
-
-function pauseAutoScroll() {
-  isAutoScrollPaused = true;
-  updateAutoScrollUI(false);
-}
-
-function resumeAutoScroll() {
-  isAutoScrollActive = true;
-  isAutoScrollPaused = false;
-  updateAutoScrollUI(true);
-
-  if (autoScrollRafId) cancelAnimationFrame(autoScrollRafId);
-  autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
-}
-
-function stopAutoScroll() {
-  isAutoScrollActive = false;
-  isAutoScrollPaused = false;
-  if (autoScrollRafId) {
-    cancelAnimationFrame(autoScrollRafId);
-    autoScrollRafId = null;
-  }
-  const controller = document.getElementById('auto-scroll-controller');
-  if (controller) {
-    controller.classList.add('paused');
-    const enLabel = document.getElementById('auto-scroll-en');
-    const hiLabel = document.getElementById('auto-scroll-hi');
-    const icon = document.getElementById('auto-scroll-icon');
-    if (icon) icon.textContent = '✓';
-    if (enLabel) enLabel.textContent = 'Invitation Complete';
-    if (hiLabel) hiLabel.textContent = 'निमंत्रण पूर्ण हुआ';
-  }
 }
 
 function runAutoScrollLoop() {
-  if (!isAutoScrollActive || isAutoScrollPaused) return;
+  if (!isAutoScrollActive || isHoldingFinger || isManualInteracting) {
+    autoScrollRafId = null;
+    return;
+  }
 
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  // Automatically stop when the bottom is reached
   if (window.scrollY >= maxScroll - 4) {
-    stopAutoScroll();
+    isAutoScrollActive = false;
+    autoScrollRafId = null;
     return;
   }
 
@@ -276,27 +285,6 @@ function runAutoScrollLoop() {
   autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
 }
 
-function updateAutoScrollUI(isRunning) {
-  const controller = document.getElementById('auto-scroll-controller');
-  const enLabel = document.getElementById('auto-scroll-en');
-  const hiLabel = document.getElementById('auto-scroll-hi');
-  const icon = document.getElementById('auto-scroll-icon');
-
-  if (!controller) return;
-
-  if (isRunning) {
-    controller.classList.remove('paused');
-    if (icon) icon.textContent = '⏸';
-    if (enLabel) enLabel.textContent = 'Pause Auto Scroll';
-    if (hiLabel) hiLabel.textContent = 'ऑटो स्क्रॉल रोकें';
-  } else {
-    controller.classList.add('paused');
-    if (icon) icon.textContent = '▶';
-    if (enLabel) enLabel.textContent = 'Resume Auto Scroll';
-    if (hiLabel) hiLabel.textContent = 'दोबारा शुरू करें';
-  }
-}
-
 function initContinuousHeroIndicator() {
   const indicator = document.getElementById('hero-scroll-indicator');
   const exploreBtn = document.getElementById('btn-explore-invitation');
@@ -306,10 +294,6 @@ function initContinuousHeroIndicator() {
     const coupleSection = document.getElementById('couple');
     if (coupleSection) {
       coupleSection.scrollIntoView({ behavior: 'smooth' });
-      // Start auto scroll smoothly once reached
-      setTimeout(() => {
-        startAutoScroll();
-      }, 700);
     }
   };
 
@@ -432,75 +416,75 @@ window.addToCalendar = function(title, startISO, endISO, location, details) {
 window.downloadAllEventsICS = function() {
   const events = [
     {
-      title: "Tel Mandap Ceremony - Neeraj & Nikita Wedding",
+      title: "Tel Mandap Ceremony - Niraj & Nikita Wedding",
       desc: "Traditional Tel Mandap ceremony at Tulsi Marriage Garden, Jaipur",
       start: "20261210T100000",
       end: "20261210T120000"
     },
     {
-      title: "Khanamati Magar / Khamani - Neeraj & Nikita Wedding",
+      title: "Khanamati Magar / Khamani - Niraj & Nikita Wedding",
       desc: "Khanamati Magar ritual and celebratory dinner",
       start: "20261210T180000",
       end: "20261210T210000"
     },
     {
-      title: "Haldi Ceremony - Neeraj & Nikita Wedding",
+      title: "Haldi Ceremony - Niraj & Nikita Wedding",
       desc: "Turmeric blessings and celebratory rituals",
       start: "20261211T100000",
       end: "20261211T130000"
     },
     {
-      title: "Chak Ceremony - Neeraj & Nikita Wedding",
+      title: "Chak Ceremony - Niraj & Nikita Wedding",
       desc: "Chak auspicious ritual",
       start: "20261211T140000",
       end: "20261211T150000"
     },
     {
-      title: "Mahila Sangeet - Neeraj & Nikita Wedding",
+      title: "Mahila Sangeet - Niraj & Nikita Wedding",
       desc: "Musical dance and celebratory evening",
       start: "20261211T150000",
       end: "20261211T190000"
     },
     {
-      title: "Bhat Ceremony - Neeraj & Nikita Wedding",
+      title: "Bhat Ceremony - Niraj & Nikita Wedding",
       desc: "Grand maternal family welcoming and traditional gifts ceremony",
       start: "20261211T210000",
       end: "20261211T233000"
     },
     {
-      title: "Lagan-Tika - Neeraj & Nikita Wedding",
+      title: "Lagan-Tika - Niraj & Nikita Wedding",
       desc: "Formal auspicious tilak ceremony between families",
       start: "20261212T110000",
       end: "20261212T133000"
     },
     {
-      title: "Preetibhoj / Wedding Feast - Neeraj & Nikita Wedding",
+      title: "Preetibhoj / Wedding Feast - Niraj & Nikita Wedding",
       desc: "Royal wedding feast honoring all esteemed guests",
       start: "20261212T191500",
       end: "20261212T233000"
     },
     {
-      title: "Baraat Prasthan - Neeraj & Nikita Wedding",
+      title: "Baraat Prasthan - Niraj & Nikita Wedding",
       desc: "Grand wedding procession with royal music and fanfare",
       start: "20261212T200000",
       end: "20261212T223000"
     },
     {
-      title: "Panigrahan Sanskar (Wedding Vows) - Neeraj & Nikita",
+      title: "Panigrahan Sanskar (Wedding Vows) - Niraj & Nikita",
       desc: "Sacred Saat Phere around holy Agni at auspicious Muhurat",
       start: "20261212T223000",
       end: "20261213T030000"
     }
   ];
 
-  const venueLoc = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
+  const venueLoc = "Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India";
 
-  let icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Neeraj Nikita Wedding//IN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n";
+  let icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Niraj Nikita Wedding//IN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n";
 
   events.forEach((ev, idx) => {
     icsContent += "BEGIN:VEVENT\r\n";
-    icsContent += `UID:wedding-event-${idx + 1}-202612@neerajnikita.com\r\n`;
-    icsContent += `DTSTAMP:20261120T120000Z\r\n`;
+    icsContent += `UID:wedding-event-${idx + 1}-202612@nirajnikita.com\r\n`;
+    icsContent += `DTSTAMP:20261121T120000Z\r\n`;
     icsContent += `DTSTART;TZID=Asia/Kolkata:${ev.start}\r\n`;
     icsContent += `DTEND;TZID=Asia/Kolkata:${ev.end}\r\n`;
     icsContent += `SUMMARY:${ev.title}\r\n`;
@@ -515,7 +499,7 @@ window.downloadAllEventsICS = function() {
   const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
   const link = document.createElement('a');
   link.href = window.URL.createObjectURL(blob);
-  link.setAttribute('download', 'Neeraj_Nikita_Wedding_Schedule_2026.ics');
+  link.setAttribute('download', 'Niraj_Nikita_Wedding_Schedule_2026.ics');
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -526,7 +510,7 @@ window.downloadAllEventsICS = function() {
    8. VENUE ADDRESS COPY
    ========================================================================== */
 window.copyVenueAddress = function() {
-  const addressText = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
+  const addressText = "Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India";
   
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(addressText).then(showToast);

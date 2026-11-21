@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>NEERAJ &amp; NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण</title>
-  <meta name="title" content="NEERAJ &amp; NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण">
+  <title>NIRAJ &amp; NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण</title>
+  <meta name="title" content="NIRAJ &amp; NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण">
   <meta name="description" content="A Celebration of Love, Togetherness &amp; Forever. Join us on Saturday, 12 December 2026 at Tulsi Marriage Garden, Jaipur.">
   <meta name="theme-color" content="#48243F">
 
   <!-- Open Graph / Facebook / WhatsApp Preview (1200x630) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://neeraj-nikita-wedding.vercel.app/">
-  <meta property="og:site_name" content="NEERAJ &amp; NIKITA Wedding Invitation">
-  <meta property="og:title" content="NEERAJ &amp; NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण">
+  <meta property="og:site_name" content="NIRAJ &amp; NIKITA Wedding Invitation">
+  <meta property="og:title" content="NIRAJ &amp; NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण">
   <meta property="og:description" content="A Celebration of Love, Togetherness &amp; Forever. Join us on Saturday, 12 December 2026 at Tulsi Marriage Garden, Jaipur.">
   <meta property="og:image" content="https://neeraj-nikita-wedding.vercel.app/images/og-preview.jpg">
   <meta property="og:image:secure_url" content="https://neeraj-nikita-wedding.vercel.app/images/og-preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="NEERAJ &amp; NIKITA Wedding Invitation">
+  <meta property="og:image:alt" content="NIRAJ &amp; NIKITA Wedding Invitation">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://neeraj-nikita-wedding.vercel.app/">
-  <meta name="twitter:title" content="NEERAJ &amp; NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण">
+  <meta name="twitter:title" content="NIRAJ &amp; NIKITA ❤️ Wedding Invitation | विवाह निमंत्रण">
   <meta name="twitter:description" content="A Celebration of Love, Togetherness &amp; Forever. Join us on Saturday, 12 December 2026 at Tulsi Marriage Garden, Jaipur.">
   <meta name="twitter:image" content="https://neeraj-nikita-wedding.vercel.app/images/og-preview.jpg">
 
@@ -57,6 +57,9 @@
   <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
   
 
+  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
+  
+  
   <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
   <link rel="stylesheet" href="style.css?v=20261121">
   <link rel="stylesheet" href="/style.css?v=20261121">
@@ -2452,114 +2455,533 @@ img {
   animation: heroKenBurns 18s ease-in-out infinite alternate;
 }
 
+
+
+
 /* ==========================================================================
-   FLOATING AUTO SCROLL CONTROLLER
+   1. ROYAL RAJASTHANI PALACE ENTRANCE GATE & 3D DOORS
    ========================================================================== */
-.auto-scroll-pill {
+.palace-gateway-screen {
   position: fixed;
-  bottom: 24px;
-  right: 20px;
-  z-index: 9998;
-  display: inline-flex;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(35, 10, 24, 0.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1.5px solid var(--antique-gold);
-  border-radius: 30px;
-  padding: 10px 18px;
-  color: var(--warm-ivory);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 15px rgba(198, 161, 91, 0.25);
+  justify-content: center;
+  background: #14050E;
+  overflow: hidden;
   cursor: pointer;
   user-select: none;
-  min-height: 46px;
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-.auto-scroll-pill:hover {
-  transform: translateY(-2px);
-  background: rgba(50, 15, 35, 0.98);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(198, 161, 91, 0.4);
+.palace-gateway-screen.gate-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-.auto-scroll-indicator-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #25D366;
-  box-shadow: 0 0 8px #25D366;
-  animation: pulseDot 1.8s infinite;
+/* Golden divine light radiance behind the palace doors */
+.palace-inner-radiance {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 245, 190, 0.98) 0%, rgba(220, 180, 80, 0.85) 30%, rgba(160, 40, 75, 0.85) 60%, rgba(20, 5, 14, 0.98) 100%);
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 1.3s ease, transform 1.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.auto-scroll-pill.paused .auto-scroll-indicator-dot {
-  background: #E8A838;
-  box-shadow: 0 0 8px #E8A838;
-  animation: none;
+.palace-gateway-screen.gate-opening .palace-inner-radiance {
+  opacity: 1;
+  transform: scale(2.2);
 }
 
-@keyframes pulseDot {
-  0% {
-    opacity: 0.4;
-    transform: scale(0.85);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-  100% {
-    opacity: 0.4;
-    transform: scale(0.85);
-  }
+/* Palace Architectural Torana Arch & Royal Pillars */
+.palace-arch-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
 }
 
-.auto-scroll-icon {
-  font-size: 0.95rem;
-  color: var(--antique-gold);
-  line-height: 1;
+.palace-torana-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, rgba(30, 8, 20, 0.98) 0%, rgba(55, 18, 38, 0.85) 75%, transparent 100%);
+  border-bottom: 2px solid var(--antique-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.auto-scroll-labels {
+.chhatri-crest {
   display: flex;
   flex-direction: column;
-  line-height: 1.15;
-  text-align: left;
+  align-items: center;
+  margin-top: 8px;
 }
 
-.auto-scroll-labels .en-as-label {
+.chhatri-crest .crest-finial {
+  width: 8px;
+  height: 8px;
+  background: var(--antique-gold-light);
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px rgba(198, 161, 91, 0.8);
+}
+
+.chhatri-crest .crest-dome {
+  width: 44px;
+  height: 16px;
+  background: var(--grad-gold);
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  border: 1px solid var(--antique-gold-rich);
+  margin-top: 2px;
+}
+
+.scalloped-mehrab-arch {
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: radial-gradient(circle at 10px 0, transparent 8px, rgba(198, 161, 91, 0.6) 9px, transparent 10px);
+  background-size: 20px 12px;
+}
+
+.palace-pillar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45px;
+  background: linear-gradient(90deg, #1A0712 0%, #3D1426 50%, #200615 100%);
+  border: 1.5px solid rgba(198, 161, 91, 0.4);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.palace-pillar.pillar-left {
+  left: 0;
+  border-left: none;
+}
+
+.palace-pillar.pillar-right {
+  right: 0;
+  border-right: none;
+}
+
+.pillar-fluting {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(90deg, transparent, transparent 7px, rgba(0, 0, 0, 0.35) 7px, rgba(0, 0, 0, 0.35) 9px);
+}
+
+.pillar-lantern {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lantern-lamp {
+  width: 14px;
+  height: 24px;
+  background: #C6A15B;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 0 12px rgba(232, 192, 110, 0.7);
+}
+
+.lantern-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 120, 0.5) 0%, transparent 70%);
+  animation: lanternFlicker 3s infinite ease-in-out;
+}
+
+@keyframes lanternFlicker {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
+  50% { opacity: 0.95; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Symmetrical 3D Palace Doors Stage */
+.palace-doors-stage {
+  position: absolute;
+  inset: 0;
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.palace-door {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.85);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.door-left {
+  transform-origin: left center;
+  transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1);
+  border-right: 2px solid #5A2A14;
+}
+
+.door-right {
+  transform-origin: right center;
+  transition: transform 1.75s cubic-bezier(0.22, 1, 0.36, 1);
+  border-left: 2px solid #5A2A14;
+}
+
+.palace-gateway-screen.gate-opening .door-left {
+  transform: rotateY(-108deg);
+}
+
+.palace-gateway-screen.gate-opening .door-right {
+  transform: rotateY(108deg);
+}
+
+/* Realistic Dark Teak / Rosewood Texture with Antique Gold Filigree */
+.door-wood-surface {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #180803 0%, #291208 20%, #36190D 45%, #2B1309 75%, #160703 100%);
+  position: relative;
+  overflow: hidden;
+  border: 4px solid #140502;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.85);
+}
+
+.door-wood-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0, 0, 0, 0.15) 3px, rgba(0, 0, 0, 0.15) 6px);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Carved Panels (Top & Bottom) */
+.door-carved-panel {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  height: 18%;
+  background: rgba(18, 5, 2, 0.7);
+  border: 1.5px solid var(--antique-gold);
+  border-radius: 8px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9), 0 0 8px rgba(198, 161, 91, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.door-carved-panel.panel-top {
+  top: 10%;
+}
+
+.door-carved-panel.panel-bottom {
+  bottom: 10%;
+}
+
+.jali-floral-motif {
+  font-size: 1.1rem;
+  color: var(--antique-gold);
+  letter-spacing: 4px;
+  text-shadow: 0 0 6px rgba(198, 161, 91, 0.6);
+}
+
+/* Antique Brass Studs (Kille) Grid */
+.door-studded-grid {
+  position: absolute;
+  top: 31%;
+  bottom: 31%;
+  left: 10%;
+  right: 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  place-items: center;
+  pointer-events: none;
+}
+
+.brass-stud {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFF6DB 0%, #D4AF37 40%, #8C6A18 80%, #4A3508 100%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  position: relative;
+}
+
+.brass-stud::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background: #FFF2B2;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+/* Antique Hanging Door Knocker */
+.door-brass-knocker {
+  position: absolute;
+  top: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+}
+
+.door-left .door-brass-knocker {
+  right: 14%;
+}
+
+.door-right .door-brass-knocker {
+  left: 14%;
+}
+
+.knocker-boss {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFF0C2 0%, #C6A15B 60%, #5E430F 100%);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+  border: 1px solid #E8D09E;
+}
+
+.knocker-ring {
+  width: 32px;
+  height: 38px;
+  border: 4px solid var(--antique-gold);
+  border-radius: 50%;
+  margin-top: -6px;
+  background: transparent;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7), inset 0 1px 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Heavy 3D Brass Hinges */
+.door-hinge {
+  position: absolute;
+  width: 12px;
+  height: 38px;
+  background: linear-gradient(180deg, #D4AF37 0%, #8C6A18 50%, #4A3508 100%);
+  border: 1px solid #FFF0C2;
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  z-index: 4;
+}
+
+.door-left .door-hinge {
+  left: 0;
+}
+
+.door-right .door-hinge {
+  right: 0;
+}
+
+.door-hinge.hinge-1 { top: 15%; }
+.door-hinge.hinge-2 { top: 48%; }
+.door-hinge.hinge-3 { bottom: 15%; }
+
+.door-lighting-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 240, 190, 0.08) 0%, transparent 30%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* Central Royal Inscription Emblem */
+.palace-center-emblem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 90%;
+  max-width: 480px;
+  pointer-events: auto;
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.palace-gateway-screen.gate-opening .palace-center-emblem {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.15);
+  pointer-events: none;
+}
+
+.emblem-card-inner {
+  background: radial-gradient(circle at 50% 45%, rgba(58, 16, 38, 0.96) 0%, rgba(30, 8, 20, 0.98) 100%);
+  border: 2px solid var(--antique-gold);
+  border-radius: 24px;
+  padding: 34px 24px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(198, 161, 91, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+.emblem-card-inner::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(232, 208, 158, 0.5);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.emblem-sacred-om {
+  font-family: var(--font-hindi);
+  font-size: 1.15rem;
+  color: var(--antique-gold-light);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.emblem-flourish-top {
+  color: var(--antique-gold);
+  font-size: 0.95rem;
+  letter-spacing: 4px;
+  margin: 6px 0 10px;
+}
+
+.emblem-names-title {
+  font-family: var(--font-cinzel);
+  font-size: 2.35rem;
+  font-weight: 900;
+  color: #FFF9F1;
+  letter-spacing: 3px;
+  line-height: 1.15;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8), 0 0 20px rgba(198, 161, 91, 0.5);
+  margin-bottom: 8px;
+}
+
+.emblem-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--antique-gold-light);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.emblem-date-badge {
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: #FFF;
-  letter-spacing: 0.3px;
+  letter-spacing: 2px;
+  margin-top: 4px;
 }
 
-.auto-scroll-labels .hi-as-label {
+/* TAP TO OPEN with radiant golden glow */
+.emblem-tap-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px auto 14px;
+  background: var(--grad-gold);
+  color: #240816;
+  padding: 13px 32px;
+  border-radius: 35px;
+  border: 1px solid #FFF5D6;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  box-shadow: 0 0 25px rgba(220, 180, 80, 0.85), 0 4px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  cursor: pointer;
+  animation: pulseGoldGlow 2s infinite ease-in-out;
+  transition: transform 0.25s ease;
+}
+
+.emblem-tap-cta:hover {
+  transform: scale(1.05);
+}
+
+@keyframes pulseGoldGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(220, 180, 80, 0.6), 0 4px 15px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 230, 130, 0.95), 0 0 15px rgba(255, 255, 255, 0.8), 0 4px 18px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.emblem-welcome-text {
   font-family: var(--font-hindi);
-  font-size: 0.68rem;
-  color: var(--antique-gold-light);
+  font-size: 0.98rem;
+  color: var(--blush-pink);
+  line-height: 1.4;
+  margin-top: 4px;
 }
 
-@media (max-width: 768px) {
-  .hero-fullscreen {
-    padding: 95px 16px 45px;
-    min-height: 90vh; /* gives a subtle glimpse of next section below */
-  }
+/* Floating Atmosphere Golden Sparks */
+.palace-sparks-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
 }
 
+.gold-sparkle-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFF5D6 0%, #C6A15B 70%, transparent 100%);
+  box-shadow: 0 0 8px rgba(198, 161, 91, 0.8);
+  animation: floatSparkle 6s infinite ease-in-out;
+}
+
+@keyframes floatSparkle {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  25% { opacity: 0.9; }
+  75% { opacity: 0.7; }
+  100% { transform: translateY(-70px) scale(1.2); opacity: 0; }
+}
+
+/* Mobile Adjustments for Palace Gate */
 @media (max-width: 480px) {
-  .auto-scroll-pill {
-    bottom: 16px;
-    right: 14px;
-    padding: 8px 14px;
-    gap: 8px;
-    min-height: 44px;
+  .emblem-names-title {
+    font-size: 1.85rem;
+    letter-spacing: 2px;
   }
-  .auto-scroll-labels .en-as-label {
-    font-size: 0.75rem;
+  .emblem-card-inner {
+    padding: 26px 18px;
   }
-  .auto-scroll-labels .hi-as-label {
-    font-size: 0.62rem;
+  .emblem-tap-cta {
+    padding: 11px 24px;
+    font-size: 0.92rem;
+    letter-spacing: 1.8px;
+  }
+  .palace-pillar {
+    width: 25px;
   }
 }
 
@@ -2578,80 +3000,120 @@ img {
   <!-- ==============================================
        1. WELCOME EXPERIENCE (CONCISE & TRADITIONAL)
        ============================================== -->
-  <div id="welcome-gateway" class="welcome-overlay">
-    <!-- Floating Golden Particles Container -->
-    <div id="welcome-particles-wrap" class="welcome-particles-wrap"></div>
+    <!-- ==============================================
+       1. ROYAL RAJASTHANI PALACE ENTRANCE GATE
+       ============================================== -->
+  <div id="welcome-gateway" class="palace-gateway-screen" role="button" tabindex="0" aria-label="Tap to open royal palace gate">
+    
+    <!-- Background Divine Golden Radiance -->
+    <div class="palace-inner-radiance" id="palace-radiance"></div>
 
-    <div class="welcome-card-wrapper">
-      <div class="welcome-card">
-        
-        <!-- Sacred Ganesha Emblem with Divine Radiance -->
-        <div class="welcome-ganesh-icon">
-          <svg viewBox="0 0 100 100" width="65" height="65" class="gold-ganesh-svg" aria-label="Lord Ganesha">
-            <defs>
-              <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FFF5D6"/>
-                <stop offset="50%" stop-color="#C6A15B"/>
-                <stop offset="100%" stop-color="#8E6A28"/>
-              </linearGradient>
-            </defs>
-            <path d="M40,24 Q50,12 60,24 L56,33 L44,33 Z" fill="url(#goldShine)"/>
-            <circle cx="50" cy="18" r="2.5" fill="#FFF"/>
-            <path d="M44,33 Q30,33 26,45 Q32,54 42,48" fill="none" stroke="url(#goldShine)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M56,33 Q70,33 74,45 Q68,54 58,48" fill="none" stroke="url(#goldShine)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M48,38 Q52,55 46,67 Q40,75 48,79 Q55,81 53,73" fill="none" stroke="url(#goldShine)" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="50" cy="35" r="1.5" fill="#C00"/>
-            <circle cx="37" cy="59" r="2.5" fill="url(#goldShine)"/>
-            <circle cx="50" cy="49" r="42" fill="none" stroke="url(#goldShine)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
-          </svg>
+    <!-- Architectural Palace Archway Framing -->
+    <div class="palace-arch-frame">
+      <div class="palace-torana-top">
+        <div class="chhatri-crest">
+          <span class="crest-finial"></span>
+          <span class="crest-dome"></span>
         </div>
-
-        <!-- Royal N & N Monogram Crest -->
-        <div class="welcome-monogram-badge">
-          <span class="monogram-letter">N</span>
-          <span class="monogram-amp">&amp;</span>
-          <span class="monogram-letter">N</span>
+        <div class="scalloped-mehrab-arch"></div>
+      </div>
+      <div class="palace-pillar pillar-left">
+        <div class="pillar-fluting"></div>
+        <div class="pillar-lantern">
+          <div class="lantern-lamp"></div>
+          <div class="lantern-glow"></div>
         </div>
-
-        <div class="bilingual-line center-line">
-          <span class="en-shloka">Vakratunda Mahakaya • वक्रतुण्ड महाकाय</span>
-          <span class="hi-shloka">॥ श्री गणेशाय नमः ॥</span>
+      </div>
+      <div class="palace-pillar pillar-right">
+        <div class="pillar-fluting"></div>
+        <div class="pillar-lantern">
+          <div class="lantern-lamp"></div>
+          <div class="lantern-glow"></div>
         </div>
-        
-        <div class="vakratunda-shloka-banner text-center">
-          <p class="hi-mantra-verse">वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।</p>
-          <p class="hi-mantra-verse">निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥</p>
-        </div>
-        
-        <h1 class="welcome-couple-title">
-          <span>NEERAJ</span>
-          <span class="heart-symbol">&amp;</span>
-          <span>NIKITA</span>
-        </h1>
-        
-        <div class="welcome-invite-note">
-          <p class="en-text">Wedding Invitation</p>
-          <p class="hi-text">मांगलिक विवाह निमंत्रण</p>
-        </div>
-
-        <div class="welcome-date-badge">
-          <span class="en-date">Saturday, 12 December 2026</span>
-          <span class="hi-date">शनिवार, 12 दिसंबर 2026</span>
-          <span class="venue-hint">Tulsi Marriage Garden, Jaipur</span>
-        </div>
-
-        <!-- Enter Invitation Button -->
-        <button id="btn-enter-invitation" class="btn-enter-invitation" aria-label="Enter Wedding Invitation">
-          <span class="btn-en">Enter Invitation</span>
-          <span class="btn-sep">|</span>
-          <span class="btn-hi">निमंत्रण देखें</span>
-          <span class="btn-arrow">⟶</span>
-        </button>
-
-        <p class="welcome-audio-tip">Tap to enter &amp; experience wedding music</p>
-
       </div>
     </div>
+
+    <!-- Symmetrical 3D Palace Doors Stage -->
+    <div class="palace-doors-stage" id="palace-doors-stage">
+      
+      <!-- LEFT PALACE DOOR -->
+      <div class="palace-door door-left" id="door-left">
+        <div class="door-wood-surface">
+          <div class="door-carved-panel panel-top">
+            <div class="jali-floral-motif">✦ ❦ ✦</div>
+          </div>
+          <div class="door-studded-grid">
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+          </div>
+          <div class="door-carved-panel panel-bottom">
+            <div class="jali-floral-motif">❦ ✦ ❦</div>
+          </div>
+          <div class="door-brass-knocker knocker-left">
+            <div class="knocker-boss"></div>
+            <div class="knocker-ring"></div>
+          </div>
+        </div>
+        <div class="door-hinge hinge-1"></div>
+        <div class="door-hinge hinge-2"></div>
+        <div class="door-hinge hinge-3"></div>
+        <div class="door-lighting-overlay"></div>
+      </div>
+
+      <!-- RIGHT PALACE DOOR -->
+      <div class="palace-door door-right" id="door-right">
+        <div class="door-wood-surface">
+          <div class="door-carved-panel panel-top">
+            <div class="jali-floral-motif">✦ ❦ ✦</div>
+          </div>
+          <div class="door-studded-grid">
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+            <span class="brass-stud"></span><span class="brass-stud"></span><span class="brass-stud"></span>
+          </div>
+          <div class="door-carved-panel panel-bottom">
+            <div class="jali-floral-motif">❦ ✦ ❦</div>
+          </div>
+          <div class="door-brass-knocker knocker-right">
+            <div class="knocker-boss"></div>
+            <div class="knocker-ring"></div>
+          </div>
+        </div>
+        <div class="door-hinge hinge-1"></div>
+        <div class="door-hinge hinge-2"></div>
+        <div class="door-hinge hinge-3"></div>
+        <div class="door-lighting-overlay"></div>
+      </div>
+
+      <!-- CENTER ROYAL SEAL / INSCRIPTION -->
+      <div class="palace-center-emblem" id="palace-center-emblem">
+        <div class="emblem-card-inner">
+          <div class="emblem-sacred-om">॥ श्री गणेशाय नमः ॥</div>
+          <div class="emblem-flourish-top">❦ ✦ ❦</div>
+          
+          <h1 class="emblem-names-title">NIRAJ &amp; NIKITA</h1>
+          
+          <div class="emblem-subtitle">WEDDING INVITATION</div>
+          <div class="emblem-date-badge">12 DECEMBER 2026</div>
+
+          <!-- Pulsing Golden Glow TAP TO OPEN CTA -->
+          <div class="emblem-tap-cta" id="emblem-tap-cta">
+            <span class="tap-text-pulsing">TAP TO OPEN</span>
+          </div>
+
+          <p class="emblem-welcome-text">हमारे शुभ विवाह में आपका हार्दिक स्वागत है।</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Atmospheric Golden Sparks Floating -->
+    <div id="palace-sparks-wrap" class="palace-sparks-wrap"></div>
   </div>
 
   <!-- ==============================================
@@ -2662,7 +3124,7 @@ img {
       <a href="#hero" class="brand-monogram-wrap">
         <span class="brand-monogram">N &amp; N</span>
         <div class="brand-title-stack">
-          <span class="en-brand">NEERAJ &amp; NIKITA</span>
+          <span class="en-brand">NIRAJ &amp; NIKITA</span>
           <span class="hi-brand">नीरज संग निकिता</span>
         </div>
       </a>
@@ -2735,7 +3197,7 @@ img {
           <span class="hi-shubh">|| शुभ विवाह ||</span>
         </div>
 
-        <h1 class="hero-couple-title">NEERAJ &amp; NIKITA</h1>
+        <h1 class="hero-couple-title">NIRAJ &amp; NIKITA</h1>
 
         <!-- Wedding Invitation | विवाह निमंत्रण -->
         <div class="hero-invitation-badge">
@@ -2846,7 +3308,7 @@ img {
             <div class="portrait-img-box">
               <img 
                 src="images/groom.jpg?v=20261121" 
-                alt="Neeraj - The Groom" 
+                alt="Niraj - The Groom" 
                 class="portrait-img" 
                 loading="eager"
                 onerror="this.onerror=null; this.src='images/groom-portrait.jpg?v=20261121';"
@@ -2860,7 +3322,7 @@ img {
               <span class="hi-role">दूल्हा</span>
             </div>
             <h3 class="person-title-bilingual">
-              <span class="en-name">Neeraj</span>
+              <span class="en-name">Niraj</span>
               <span class="sep">|</span>
               <span class="hi-name">नीरज</span>
             </h3>
@@ -2909,7 +3371,7 @@ img {
         <div class="together-media">
           <img 
             src="images/couple.jpg?v=20261121" 
-            alt="Neeraj and Nikita" 
+            alt="Niraj and Nikita" 
             class="together-img" 
             loading="eager"
             onerror="this.onerror=null; this.src='images/couple-rings.jpg?v=20261121';"
@@ -3018,7 +3480,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action" onclick="addToCalendar('Tel Mandap Ceremony', '2026-12-10T10:00:00', '2026-12-10T12:00:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Tel Mandap Ceremony for Neeraj & Nikita')">
+                <button class="btn-cal-action" onclick="addToCalendar('Tel Mandap Ceremony', '2026-12-10T10:00:00', '2026-12-10T12:00:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Tel Mandap Ceremony for Niraj & Nikita')">
                   <span class="btn-en">Add to Calendar</span>
                   <span class="btn-hi">कैलेंडर में जोड़ें</span>
                 </button>
@@ -3048,7 +3510,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action" onclick="addToCalendar('Khanamati Magar Ceremony', '2026-12-10T18:00:00', '2026-12-10T21:00:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Khanamati Magar ceremony for Neeraj & Nikita')">
+                <button class="btn-cal-action" onclick="addToCalendar('Khanamati Magar Ceremony', '2026-12-10T18:00:00', '2026-12-10T21:00:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Khanamati Magar ceremony for Niraj & Nikita')">
                   <span class="btn-en">Add to Calendar</span>
                   <span class="btn-hi">कैलेंडर में जोड़ें</span>
                 </button>
@@ -3096,7 +3558,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action" onclick="addToCalendar('Haldi Ceremony', '2026-12-11T10:00:00', '2026-12-11T13:00:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Haldi Ceremony for Neeraj & Nikita')">
+                <button class="btn-cal-action" onclick="addToCalendar('Haldi Ceremony', '2026-12-11T10:00:00', '2026-12-11T13:00:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Haldi Ceremony for Niraj & Nikita')">
                   <span class="btn-en">Add to Calendar</span>
                   <span class="btn-hi">कैलेंडर में जोड़ें</span>
                 </button>
@@ -3126,7 +3588,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action" onclick="addToCalendar('Chak Ceremony', '2026-12-11T14:00:00', '2026-12-11T15:00:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Chak Ceremony for Neeraj & Nikita')">
+                <button class="btn-cal-action" onclick="addToCalendar('Chak Ceremony', '2026-12-11T14:00:00', '2026-12-11T15:00:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Chak Ceremony for Niraj & Nikita')">
                   <span class="btn-en">Add to Calendar</span>
                   <span class="btn-hi">कैलेंडर में जोड़ें</span>
                 </button>
@@ -3156,7 +3618,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action" onclick="addToCalendar('Mahila Sangeet', '2026-12-11T15:00:00', '2026-12-11T19:00:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Mahila Sangeet for Neeraj & Nikita')">
+                <button class="btn-cal-action" onclick="addToCalendar('Mahila Sangeet', '2026-12-11T15:00:00', '2026-12-11T19:00:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Mahila Sangeet for Niraj & Nikita')">
                   <span class="btn-en">Add to Calendar</span>
                   <span class="btn-hi">कैलेंडर में जोड़ें</span>
                 </button>
@@ -3186,7 +3648,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action" onclick="addToCalendar('Bhat Ceremony', '2026-12-11T21:00:00', '2026-12-11T23:30:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Bhat Ceremony for Neeraj & Nikita')">
+                <button class="btn-cal-action" onclick="addToCalendar('Bhat Ceremony', '2026-12-11T21:00:00', '2026-12-11T23:30:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Bhat Ceremony for Niraj & Nikita')">
                   <span class="btn-en">Add to Calendar</span>
                   <span class="btn-hi">कैलेंडर में जोड़ें</span>
                 </button>
@@ -3234,7 +3696,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action" onclick="addToCalendar('Lagan-Tika Ceremony', '2026-12-12T11:00:00', '2026-12-12T13:30:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Lagan-Tika ceremony for Neeraj & Nikita')">
+                <button class="btn-cal-action" onclick="addToCalendar('Lagan-Tika Ceremony', '2026-12-12T11:00:00', '2026-12-12T13:30:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Lagan-Tika ceremony for Niraj & Nikita')">
                   <span class="btn-en">Add to Calendar</span>
                   <span class="btn-hi">कैलेंडर में जोड़ें</span>
                 </button>
@@ -3264,7 +3726,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action" onclick="addToCalendar('Preetibhoj Wedding Feast', '2026-12-12T19:15:00', '2026-12-12T23:30:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Preetibhoj Wedding Feast for Neeraj & Nikita')">
+                <button class="btn-cal-action" onclick="addToCalendar('Preetibhoj Wedding Feast', '2026-12-12T19:15:00', '2026-12-12T23:30:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Preetibhoj Wedding Feast for Niraj & Nikita')">
                   <span class="btn-en">Add to Calendar</span>
                   <span class="btn-hi">कैलेंडर में जोड़ें</span>
                 </button>
@@ -3294,7 +3756,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action" onclick="addToCalendar('Baraat Prasthan', '2026-12-12T20:00:00', '2026-12-12T22:30:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Baraat procession for Neeraj & Nikita')">
+                <button class="btn-cal-action" onclick="addToCalendar('Baraat Prasthan', '2026-12-12T20:00:00', '2026-12-12T22:30:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Baraat procession for Niraj & Nikita')">
                   <span class="btn-en">Add to Calendar</span>
                   <span class="btn-hi">कैलेंडर में जोड़ें</span>
                 </button>
@@ -3324,7 +3786,7 @@ img {
                 <span class="venue-pill">Tulsi Marriage Garden, Jaipur | तुलसी मैरिज गार्डन</span>
               </div>
               <div class="tile-action-col">
-                <button class="btn-cal-action primary-cal" onclick="addToCalendar('Panigrahan Sanskar Wedding Vows', '2026-12-12T22:30:00', '2026-12-13T03:00:00', 'Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Panigrahan Sanskar Wedding Ceremony for Neeraj & Nikita')">
+                <button class="btn-cal-action primary-cal" onclick="addToCalendar('Panigrahan Sanskar Wedding Vows', '2026-12-12T22:30:00', '2026-12-13T03:00:00', 'Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India', 'Panigrahan Sanskar Wedding Ceremony for Niraj & Nikita')">
                   <span class="btn-en">Add Wedding</span>
                   <span class="btn-hi">विवाह जोड़ें</span>
                 </button>
@@ -3378,7 +3840,7 @@ img {
           <div class="venue-address-item">
             <span class="loc-pin">📍</span>
             <div class="address-bilingual-block">
-              <p class="en-address">Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan.</p>
+              <p class="en-address">Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan.</p>
               <p class="hi-address">भैरों सर्किल के पास, प्रताप नगर, जयपुर, राजस्थान।</p>
             </div>
           </div>
@@ -3556,11 +4018,11 @@ img {
   <footer class="wedding-footer">
     <div class="footer-inner text-center">
       <div class="footer-om">॥ श्री गणेशाय नमः ॥</div>
-      <h2 class="footer-names">NEERAJ &amp; NIKITA</h2>
+      <h2 class="footer-names">NIRAJ &amp; NIKITA</h2>
       <p class="footer-dates">
         <span>Saturday, 12 December 2026</span>
         <span>•</span>
-        <span>Tulsi Marriage Garden, Near Bhairo Circle, Jaipur, Rajasthan</span>
+        <span>Tulsi Marriage Garden, Near Bhairav Circle, Jaipur, Rajasthan</span>
       </p>
       
       <div class="footer-divider-ornament">
@@ -3574,21 +4036,13 @@ img {
 
       <!-- Small, Elegant Developer Credit -->
       <div class="footer-credit-line">
-        Designed &amp; Developed by Kapil Yaduvanshi
+        Designed &amp; Developed by Kapil Yaduvanshi • <a href="mailto:yaduvanshikapil287@gmail.com" class="dev-mail-link" style="color:var(--antique-gold-light); text-decoration:underline;">yaduvanshikapil287@gmail.com</a>
       </div>
 
     </div>
   </footer>
 
-  <!-- Floating Auto Scroll Controller -->
-  <div id="auto-scroll-controller" class="auto-scroll-pill" role="button" tabindex="0" aria-label="Toggle auto scroll" style="display: none;">
-    <span class="auto-scroll-indicator-dot"></span>
-    <span class="auto-scroll-icon" id="auto-scroll-icon">⏸</span>
-    <div class="auto-scroll-labels">
-      <span class="en-as-label" id="auto-scroll-en">Pause Auto Scroll</span>
-      <span class="hi-as-label" id="auto-scroll-hi">ऑटो स्क्रॉल रोकें</span>
-    </div>
-  </div>
+  
 
   <!-- Main JavaScript Logic -->
   
@@ -3609,6 +4063,9 @@ img {
   <!-- Production Inlined Interactive Logic -->
   
 
+  <!-- Production Inlined Interactive Logic -->
+  
+  
   <!-- External Script Fallbacks (Relative & Absolute) -->
   <script src="script.js?v=20261121"></script>
   <script src="/script.js?v=20261121"></script>
@@ -3616,24 +4073,24 @@ img {
   <!-- Production Inlined Interactive Logic -->
   <script id="royal-wedding-script">
 /**
- * NEERAJ & NIKITA WEDDING - INTERACTIVE JAVASCRIPT
- * Bilingual Royal Experience • 10 - 12 December 2026 | Jaipur, Rajasthan
- * Designed & Developed by Kapil Yaduvanshi
+ * NIRAJ & NIKITA ROYAL WEDDING - INTERACTIVE JAVASCRIPT
+ * Royal Rajasthani Palace Experience • 10 - 12 December 2026 | Jaipur, Rajasthan
+ * Designed & Developed by Kapil Yaduvanshi (yaduvanshikapil287@gmail.com)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initAudioExperience();
-  initWelcomeGateway();
+  initRoyalPalaceGate();
+  initAutoScrollHoldToPause();
+  initContinuousHeroIndicator();
   initLiveCountdown();
   initScheduleFilters();
   initMobileNav();
   initScrollAnimations();
-  initAutoScroll();
-  initContinuousHeroIndicator();
 });
 
 /* ==========================================================================
-   1. DEVOTIONAL AUDIO EXPERIENCE (USER'S AUTHENTIC UPLOADED MP3 ONLY)
+   1. BACKGROUND AUDIO EXPERIENCE (USER'S LATEST WEDDING MUSIC TRACK ONLY)
    ========================================================================== */
 let audioEl = null;
 let isAudioMuted = false;
@@ -3642,11 +4099,9 @@ function initAudioExperience() {
   audioEl = document.getElementById('wedding-audio');
   if (!audioEl) return;
 
-  // Set gentle default background volume
   audioEl.volume = 0.28;
   audioEl.loop = true;
 
-  // Check saved session mute preference
   const savedMute = sessionStorage.getItem('wedding_music_muted');
   if (savedMute === 'true') {
     isAudioMuted = true;
@@ -3661,7 +4116,6 @@ function initAudioExperience() {
   }
 }
 
-// Starts ONLY upon clicking "Enter Invitation" button
 function startDevotionalMusic() {
   if (!audioEl) return;
 
@@ -3720,45 +4174,67 @@ function updateMusicUI(isPlaying) {
 
 
 /* ==========================================================================
-   2. CINEMATIC WELCOME GATEWAY & PARTICLES
+   2. ROYAL RAJASTHANI PALACE GATE OPENING ANIMATION
    ========================================================================== */
-function initWelcomeGateway() {
-  const enterBtn = document.getElementById('btn-enter-invitation');
-  const gateway = document.getElementById('welcome-gateway');
+let isGateOpened = false;
+
+function initRoyalPalaceGate() {
+  const gateScreen = document.getElementById('welcome-gateway');
+  const tapCta = document.getElementById('emblem-tap-cta');
   const body = document.body;
 
-  generateWelcomeParticles();
+  generatePalaceSparks();
 
-  if (!enterBtn || !gateway) return;
+  if (!gateScreen) return;
 
-  enterBtn.addEventListener('click', () => {
+  function openRoyalGate(e) {
+    if (isGateOpened) return;
+    isGateOpened = true;
+
+    // Start background music immediately upon user interaction
     startDevotionalMusic();
-    gateway.classList.add('cinematic-opened');
-    body.classList.remove('welcome-locked');
 
+    // Trigger 3D door swing, golden light radiance and emblem dissolve
+    gateScreen.classList.add('gate-opening');
+
+    // Smooth transition: doors swing open for ~1.6s, then screen fades out
     setTimeout(() => {
-      gateway.style.display = 'none';
-      // Trigger slow auto-scroll after opening the main invitation
-      startAutoScroll();
-    }, 1100);
-  });
+      body.classList.remove('welcome-locked');
+      gateScreen.classList.add('gate-hidden');
+
+      setTimeout(() => {
+        gateScreen.style.display = 'none';
+        // Start polished slow automatic scrolling right after gate transition
+        startAutoScroll();
+      }, 400);
+    }, 1600);
+  }
+
+  // Tapping anywhere on the gate or the TAP TO OPEN text triggers opening
+  gateScreen.addEventListener('click', openRoyalGate);
+  if (tapCta) {
+    tapCta.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openRoyalGate(e);
+    });
+  }
 }
 
-function generateWelcomeParticles() {
-  const container = document.getElementById('welcome-particles-wrap');
+function generatePalaceSparks() {
+  const container = document.getElementById('palace-sparks-wrap');
   if (!container) return;
 
-  const count = window.innerWidth < 768 ? 20 : 35;
+  const count = window.innerWidth < 768 ? 18 : 32;
   for (let i = 0; i < count; i++) {
     const p = document.createElement('span');
-    p.className = 'gold-dust-particle';
+    p.className = 'gold-sparkle-dot';
     const size = Math.random() * 4 + 2;
     p.style.width = size + 'px';
     p.style.height = size + 'px';
     p.style.left = Math.random() * 100 + '%';
     p.style.top = Math.random() * 100 + '%';
-    p.style.animationDelay = (Math.random() * 8) + 's';
-    p.style.animationDuration = (Math.random() * 6 + 6) + 's';
+    p.style.animationDelay = (Math.random() * 7) + 's';
+    p.style.animationDuration = (Math.random() * 5 + 5) + 's';
     p.style.opacity = (Math.random() * 0.6 + 0.3).toString();
     container.appendChild(p);
   }
@@ -3766,120 +4242,110 @@ function generateWelcomeParticles() {
 
 
 /* ==========================================================================
-   3. AUTOMATIC SLOW SCROLL EXPERIENCE WITH FULL USER CONTROL
+   3. POLISHED AUTOMATIC SCROLL — HOLD TO PAUSE & SWIPE TO RESUME
    ========================================================================== */
 let isAutoScrollActive = false;
-let isAutoScrollPaused = false;
+let isHoldingFinger = false;
+let isManualInteracting = false;
+let resumeTimeoutId = null;
 let autoScrollRafId = null;
 let autoScrollAccumulator = 0;
-const AUTO_SCROLL_SPEED = 0.68; // Smooth reading pace (~40px/sec)
+// 25 - 35 pixels per second: ~0.50 px per frame at 60fps = 30 px/sec
+const AUTO_SCROLL_SPEED = 0.50;
 
-function initAutoScroll() {
-  const controller = document.getElementById('auto-scroll-controller');
-  if (!controller) return;
-
-  controller.addEventListener('click', () => {
-    if (isAutoScrollPaused) {
-      resumeAutoScroll();
-    } else {
-      pauseAutoScroll();
-    }
-  });
-
-  // User manual interaction listeners: touching, swiping, or scrolling immediately pauses auto-scroll
-  const pauseOnUserAction = (e) => {
-    // Ignore clicks directly on controller itself or top actions
-    if (e.target && e.target.closest && (
-      e.target.closest('#auto-scroll-controller') ||
-      e.target.closest('#music-toggle-btn') ||
-      e.target.closest('#hamburger-btn')
-    )) {
-      return;
-    }
-
-    if (isAutoScrollActive && !isAutoScrollPaused) {
-      pauseAutoScroll();
-    }
-  };
-
-  window.addEventListener('touchstart', pauseOnUserAction, { passive: true });
-  window.addEventListener('wheel', pauseOnUserAction, { passive: true });
-  window.addEventListener('pointerdown', pauseOnUserAction, { passive: true });
-  window.addEventListener('keydown', (e) => {
-    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Space'].includes(e.code)) {
-      pauseOnUserAction(e);
-    }
-  }, { passive: true });
-
-  // Navigation items and buttons should pause auto-scroll gracefully
-  document.querySelectorAll('.nav-item, .btn-contact-action, .schedule-tab-btn, .btn-explore-invitation').forEach(el => {
-    el.addEventListener('click', () => {
-      if (isAutoScrollActive && !isAutoScrollPaused) {
-        pauseAutoScroll();
-      }
-    });
-  });
-}
-
-function startAutoScroll() {
+function initAutoScrollHoldToPause() {
   // Respect reduced-motion accessibility preference
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
-  const controller = document.getElementById('auto-scroll-controller');
-  if (controller) {
-    controller.style.display = 'inline-flex';
+  // HOLD TO PAUSE: Pressing & holding a finger anywhere on content pauses immediately
+  const onHoldStart = (e) => {
+    // Never interfere with interactive controls (buttons, links, inputs, maps, audio)
+    if (e.target && e.target.closest && e.target.closest('a, button, input, iframe, select, textarea, .nav-item, #music-toggle-btn')) {
+      return;
+    }
+    isHoldingFinger = true;
+  };
+
+  // RELEASE TO RESUME: When finger is released, resume from exact position
+  const onHoldEnd = () => {
+    if (isHoldingFinger) {
+      isHoldingFinger = false;
+      if (isAutoScrollActive && !isManualInteracting && !autoScrollRafId) {
+        autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+      }
+    }
+  };
+
+  window.addEventListener('touchstart', onHoldStart, { passive: true });
+  window.addEventListener('touchend', onHoldEnd, { passive: true });
+  window.addEventListener('touchcancel', onHoldEnd, { passive: true });
+
+  window.addEventListener('pointerdown', onHoldStart, { passive: true });
+  window.addEventListener('pointerup', onHoldEnd, { passive: true });
+  window.addEventListener('pointercancel', onHoldEnd, { passive: true });
+
+  window.addEventListener('mousedown', onHoldStart, { passive: true });
+  window.addEventListener('mouseup', onHoldEnd, { passive: true });
+
+  // MANUAL SWIPING: Smoothly pause during manual scrolling, resume after a short delay
+  const onManualSwipe = (e) => {
+    isManualInteracting = true;
+    if (resumeTimeoutId) clearTimeout(resumeTimeoutId);
+
+    // Resume scrolling smoothly 1.4s after the guest finishes swiping
+    resumeTimeoutId = setTimeout(() => {
+      isManualInteracting = false;
+      if (isAutoScrollActive && !isHoldingFinger && !autoScrollRafId) {
+        autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+      }
+    }, 1400);
+  };
+
+  window.addEventListener('wheel', onManualSwipe, { passive: true });
+  window.addEventListener('touchmove', onManualSwipe, { passive: true });
+
+  // Prevent auto-scroll disruption during explicit button / nav navigation
+  document.querySelectorAll('.nav-item, .btn-contact-action, .schedule-tab-btn, .btn-explore-invitation').forEach(el => {
+    el.addEventListener('click', () => {
+      isManualInteracting = true;
+      if (resumeTimeoutId) clearTimeout(resumeTimeoutId);
+      resumeTimeoutId = setTimeout(() => {
+        isManualInteracting = false;
+        if (isAutoScrollActive && !isHoldingFinger && !autoScrollRafId) {
+          autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+        }
+      }, 2000);
+    });
+  });
+}
+
+function startAutoScroll() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
   }
 
   isAutoScrollActive = true;
-  isAutoScrollPaused = false;
+  isHoldingFinger = false;
+  isManualInteracting = false;
   autoScrollAccumulator = 0;
-  updateAutoScrollUI(true);
 
   if (autoScrollRafId) cancelAnimationFrame(autoScrollRafId);
   autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
-}
-
-function pauseAutoScroll() {
-  isAutoScrollPaused = true;
-  updateAutoScrollUI(false);
-}
-
-function resumeAutoScroll() {
-  isAutoScrollActive = true;
-  isAutoScrollPaused = false;
-  updateAutoScrollUI(true);
-
-  if (autoScrollRafId) cancelAnimationFrame(autoScrollRafId);
-  autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
-}
-
-function stopAutoScroll() {
-  isAutoScrollActive = false;
-  isAutoScrollPaused = false;
-  if (autoScrollRafId) {
-    cancelAnimationFrame(autoScrollRafId);
-    autoScrollRafId = null;
-  }
-  const controller = document.getElementById('auto-scroll-controller');
-  if (controller) {
-    controller.classList.add('paused');
-    const enLabel = document.getElementById('auto-scroll-en');
-    const hiLabel = document.getElementById('auto-scroll-hi');
-    const icon = document.getElementById('auto-scroll-icon');
-    if (icon) icon.textContent = '✓';
-    if (enLabel) enLabel.textContent = 'Invitation Complete';
-    if (hiLabel) hiLabel.textContent = 'निमंत्रण पूर्ण हुआ';
-  }
 }
 
 function runAutoScrollLoop() {
-  if (!isAutoScrollActive || isAutoScrollPaused) return;
+  if (!isAutoScrollActive || isHoldingFinger || isManualInteracting) {
+    autoScrollRafId = null;
+    return;
+  }
 
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  // Automatically stop when the bottom is reached
   if (window.scrollY >= maxScroll - 4) {
-    stopAutoScroll();
+    isAutoScrollActive = false;
+    autoScrollRafId = null;
     return;
   }
 
@@ -3893,27 +4359,6 @@ function runAutoScrollLoop() {
   autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
 }
 
-function updateAutoScrollUI(isRunning) {
-  const controller = document.getElementById('auto-scroll-controller');
-  const enLabel = document.getElementById('auto-scroll-en');
-  const hiLabel = document.getElementById('auto-scroll-hi');
-  const icon = document.getElementById('auto-scroll-icon');
-
-  if (!controller) return;
-
-  if (isRunning) {
-    controller.classList.remove('paused');
-    if (icon) icon.textContent = '⏸';
-    if (enLabel) enLabel.textContent = 'Pause Auto Scroll';
-    if (hiLabel) hiLabel.textContent = 'ऑटो स्क्रॉल रोकें';
-  } else {
-    controller.classList.add('paused');
-    if (icon) icon.textContent = '▶';
-    if (enLabel) enLabel.textContent = 'Resume Auto Scroll';
-    if (hiLabel) hiLabel.textContent = 'दोबारा शुरू करें';
-  }
-}
-
 function initContinuousHeroIndicator() {
   const indicator = document.getElementById('hero-scroll-indicator');
   const exploreBtn = document.getElementById('btn-explore-invitation');
@@ -3923,10 +4368,6 @@ function initContinuousHeroIndicator() {
     const coupleSection = document.getElementById('couple');
     if (coupleSection) {
       coupleSection.scrollIntoView({ behavior: 'smooth' });
-      // Start auto scroll smoothly once reached
-      setTimeout(() => {
-        startAutoScroll();
-      }, 700);
     }
   };
 
@@ -4049,75 +4490,75 @@ window.addToCalendar = function(title, startISO, endISO, location, details) {
 window.downloadAllEventsICS = function() {
   const events = [
     {
-      title: "Tel Mandap Ceremony - Neeraj & Nikita Wedding",
+      title: "Tel Mandap Ceremony - Niraj & Nikita Wedding",
       desc: "Traditional Tel Mandap ceremony at Tulsi Marriage Garden, Jaipur",
       start: "20261210T100000",
       end: "20261210T120000"
     },
     {
-      title: "Khanamati Magar / Khamani - Neeraj & Nikita Wedding",
+      title: "Khanamati Magar / Khamani - Niraj & Nikita Wedding",
       desc: "Khanamati Magar ritual and celebratory dinner",
       start: "20261210T180000",
       end: "20261210T210000"
     },
     {
-      title: "Haldi Ceremony - Neeraj & Nikita Wedding",
+      title: "Haldi Ceremony - Niraj & Nikita Wedding",
       desc: "Turmeric blessings and celebratory rituals",
       start: "20261211T100000",
       end: "20261211T130000"
     },
     {
-      title: "Chak Ceremony - Neeraj & Nikita Wedding",
+      title: "Chak Ceremony - Niraj & Nikita Wedding",
       desc: "Chak auspicious ritual",
       start: "20261211T140000",
       end: "20261211T150000"
     },
     {
-      title: "Mahila Sangeet - Neeraj & Nikita Wedding",
+      title: "Mahila Sangeet - Niraj & Nikita Wedding",
       desc: "Musical dance and celebratory evening",
       start: "20261211T150000",
       end: "20261211T190000"
     },
     {
-      title: "Bhat Ceremony - Neeraj & Nikita Wedding",
+      title: "Bhat Ceremony - Niraj & Nikita Wedding",
       desc: "Grand maternal family welcoming and traditional gifts ceremony",
       start: "20261211T210000",
       end: "20261211T233000"
     },
     {
-      title: "Lagan-Tika - Neeraj & Nikita Wedding",
+      title: "Lagan-Tika - Niraj & Nikita Wedding",
       desc: "Formal auspicious tilak ceremony between families",
       start: "20261212T110000",
       end: "20261212T133000"
     },
     {
-      title: "Preetibhoj / Wedding Feast - Neeraj & Nikita Wedding",
+      title: "Preetibhoj / Wedding Feast - Niraj & Nikita Wedding",
       desc: "Royal wedding feast honoring all esteemed guests",
       start: "20261212T191500",
       end: "20261212T233000"
     },
     {
-      title: "Baraat Prasthan - Neeraj & Nikita Wedding",
+      title: "Baraat Prasthan - Niraj & Nikita Wedding",
       desc: "Grand wedding procession with royal music and fanfare",
       start: "20261212T200000",
       end: "20261212T223000"
     },
     {
-      title: "Panigrahan Sanskar (Wedding Vows) - Neeraj & Nikita",
+      title: "Panigrahan Sanskar (Wedding Vows) - Niraj & Nikita",
       desc: "Sacred Saat Phere around holy Agni at auspicious Muhurat",
       start: "20261212T223000",
       end: "20261213T030000"
     }
   ];
 
-  const venueLoc = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
+  const venueLoc = "Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India";
 
-  let icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Neeraj Nikita Wedding//IN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n";
+  let icsContent = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Niraj Nikita Wedding//IN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n";
 
   events.forEach((ev, idx) => {
     icsContent += "BEGIN:VEVENT\r\n";
-    icsContent += `UID:wedding-event-${idx + 1}-202612@neerajnikita.com\r\n`;
-    icsContent += `DTSTAMP:20261120T120000Z\r\n`;
+    icsContent += `UID:wedding-event-${idx + 1}-202612@nirajnikita.com\r\n`;
+    icsContent += `DTSTAMP:20261121T120000Z\r\n`;
     icsContent += `DTSTART;TZID=Asia/Kolkata:${ev.start}\r\n`;
     icsContent += `DTEND;TZID=Asia/Kolkata:${ev.end}\r\n`;
     icsContent += `SUMMARY:${ev.title}\r\n`;
@@ -4132,7 +4573,7 @@ window.downloadAllEventsICS = function() {
   const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
   const link = document.createElement('a');
   link.href = window.URL.createObjectURL(blob);
-  link.setAttribute('download', 'Neeraj_Nikita_Wedding_Schedule_2026.ics');
+  link.setAttribute('download', 'Niraj_Nikita_Wedding_Schedule_2026.ics');
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -4143,7 +4584,7 @@ window.downloadAllEventsICS = function() {
    8. VENUE ADDRESS COPY
    ========================================================================== */
 window.copyVenueAddress = function() {
-  const addressText = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
+  const addressText = "Tulsi Marriage Garden, Near Bhairav Circle, Pratap Nagar, Jaipur, Rajasthan, India";
   
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(addressText).then(showToast);
