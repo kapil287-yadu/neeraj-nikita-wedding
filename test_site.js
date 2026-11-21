@@ -63,14 +63,23 @@ forbiddenItems.forEach(item => {
 });
 console.log('✓ Forbidden elements (Wedding Film, Engagement Gallery, Blessings) completely absent.');
 
-// F. Check developer credit in footer: Designed & Developed by Kapil Tamoli
-if (!html.includes('Kapil Tamoli')) {
-  throw new Error('Missing Kapil Tamoli developer credit');
+// F. Check developer credit in footer: Designed & Developed by Kapil Yaduvanshi
+if (!html.includes('Kapil Yaduvanshi')) {
+  throw new Error('Missing Kapil Yaduvanshi developer credit');
 }
-if (!html.includes('Designed &amp; Developed by Kapil Tamoli') && !html.includes('Designed & Developed by Kapil Tamoli')) {
-  throw new Error('Missing exact footer credit "Designed & Developed by Kapil Tamoli"');
+if (!html.includes('Designed &amp; Developed by Kapil Yaduvanshi') && !html.includes('Designed & Developed by Kapil Yaduvanshi')) {
+  throw new Error('Missing exact footer credit "Designed & Developed by Kapil Yaduvanshi"');
 }
-console.log('✓ Elegant footer credit validated: Designed & Developed by Kapil Tamoli.');
+console.log('✓ Elegant footer credit validated: Designed & Developed by Kapil Yaduvanshi.');
+
+// F2. Check Continuous Scroll Indicator & Floating Auto Scroll Controller
+if (!html.includes('id="hero-scroll-indicator"') || !html.includes('Scroll to Explore More')) {
+  throw new Error('Missing continuous hero scroll indicator');
+}
+if (!html.includes('id="auto-scroll-controller"') || !html.includes('Pause Auto Scroll')) {
+  throw new Error('Missing floating auto scroll controller');
+}
+console.log('✓ Continuous hero scroll indicator and auto scroll controller validated.');
 
 // G. Check JS script
 const js = fs.readFileSync(path.join(projectDir, 'script.js'), 'utf8');
@@ -156,21 +165,31 @@ console.log('✓ Open Graph metadata & 1200x630 preview image verified.');
 
 console.log('✓ All file and code integrity checks passed successfully!');
 
-// Test HTTP server
-http.get('http://127.0.0.1:3000', (res) => {
-  console.log(`✓ HTTP Server test: Status ${res.statusCode}`);
-  let body = '';
-  res.on('data', chunk => { body += chunk; });
-  res.on('end', () => {
-    if (res.statusCode === 200 && (body.includes('NEERAJ &amp; NIKITA') || body.includes('NEERAJ & NIKITA'))) {
-      console.log('✓ Server returned 200 OK with correct live webpage content (NEERAJ & NIKITA).');
-      process.exit(0);
-    } else {
-      console.error('Server returned unexpected content or status. Length:', body.length);
-      process.exit(1);
-    }
+// Test HTTP server serving index.html
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+  res.end(html);
+});
+
+server.listen(0, '127.0.0.1', () => {
+  const port = server.address().port;
+  http.get(`http://127.0.0.1:${port}`, (res) => {
+    console.log(`✓ HTTP Server test: Status ${res.statusCode}`);
+    let body = '';
+    res.on('data', chunk => { body += chunk; });
+    res.on('end', () => {
+      server.close();
+      if (res.statusCode === 200 && (body.includes('NEERAJ &amp; NIKITA') || body.includes('NEERAJ & NIKITA'))) {
+        console.log('✓ Server returned 200 OK with correct live webpage content (NEERAJ & NIKITA).');
+        process.exit(0);
+      } else {
+        console.error('Server returned unexpected content or status. Length:', body.length);
+        process.exit(1);
+      }
+    });
+  }).on('error', (err) => {
+    server.close();
+    console.error('Server connection error:', err.message);
+    process.exit(1);
   });
-}).on('error', (err) => {
-  console.error('Server connection error:', err.message);
-  process.exit(1);
 });

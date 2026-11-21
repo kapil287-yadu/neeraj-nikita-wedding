@@ -2269,3 +2269,231 @@ img {
   box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
   transform: translateY(-2px);
 }
+
+/* ==========================================================================
+   CONTINUOUS HERO SCROLL INDICATOR & BACKGROUND ANIMATION
+   ========================================================================== */
+.hero-scroll-indicator {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 22px;
+  cursor: pointer;
+  user-select: none;
+  animation: floatIndicator 3s ease-in-out infinite;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: var(--antique-gold-light);
+  text-decoration: none;
+}
+
+.hero-scroll-indicator:hover {
+  transform: translateY(4px);
+  color: #FFF;
+}
+
+.scroll-mouse-icon {
+  width: 22px;
+  height: 34px;
+  border: 2px solid var(--antique-gold);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: rgba(42, 14, 34, 0.45);
+}
+
+.scroll-wheel {
+  width: 3px;
+  height: 6px;
+  background: var(--antique-gold-light);
+  border-radius: 2px;
+  margin-top: 5px;
+  animation: wheelScroll 1.8s ease-in-out infinite;
+}
+
+.scroll-text-bilingual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.scroll-text-bilingual .en-scroll {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--antique-gold-light);
+}
+
+.scroll-text-bilingual .hi-scroll {
+  font-family: var(--font-hindi);
+  font-size: 0.75rem;
+  color: var(--blush-pink);
+  margin-top: 2px;
+}
+
+.scroll-arrow-bounce {
+  color: var(--antique-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounceDown 1.6s ease-in-out infinite;
+}
+
+@keyframes floatIndicator {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes wheelScroll {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* Gentle Ken Burns breathing background */
+@keyframes heroKenBurns {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.07);
+  }
+}
+
+.hero-bg-image {
+  animation: heroKenBurns 18s ease-in-out infinite alternate;
+}
+
+/* ==========================================================================
+   FLOATING AUTO SCROLL CONTROLLER
+   ========================================================================== */
+.auto-scroll-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(35, 10, 24, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid var(--antique-gold);
+  border-radius: 30px;
+  padding: 10px 18px;
+  color: var(--warm-ivory);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 15px rgba(198, 161, 91, 0.25);
+  cursor: pointer;
+  user-select: none;
+  min-height: 46px;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auto-scroll-pill:hover {
+  transform: translateY(-2px);
+  background: rgba(50, 15, 35, 0.98);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(198, 161, 91, 0.4);
+}
+
+.auto-scroll-indicator-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #25D366;
+  box-shadow: 0 0 8px #25D366;
+  animation: pulseDot 1.8s infinite;
+}
+
+.auto-scroll-pill.paused .auto-scroll-indicator-dot {
+  background: #E8A838;
+  box-shadow: 0 0 8px #E8A838;
+  animation: none;
+}
+
+@keyframes pulseDot {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.auto-scroll-icon {
+  font-size: 0.95rem;
+  color: var(--antique-gold);
+  line-height: 1;
+}
+
+.auto-scroll-labels {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.auto-scroll-labels .en-as-label {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #FFF;
+  letter-spacing: 0.3px;
+}
+
+.auto-scroll-labels .hi-as-label {
+  font-family: var(--font-hindi);
+  font-size: 0.68rem;
+  color: var(--antique-gold-light);
+}
+
+@media (max-width: 768px) {
+  .hero-fullscreen {
+    padding: 95px 16px 45px;
+    min-height: 90vh; /* gives a subtle glimpse of next section below */
+  }
+}
+
+@media (max-width: 480px) {
+  .auto-scroll-pill {
+    bottom: 16px;
+    right: 14px;
+    padding: 8px 14px;
+    gap: 8px;
+    min-height: 44px;
+  }
+  .auto-scroll-labels .en-as-label {
+    font-size: 0.75rem;
+  }
+  .auto-scroll-labels .hi-as-label {
+    font-size: 0.62rem;
+  }
+}

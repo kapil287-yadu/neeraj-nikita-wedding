@@ -1,7 +1,7 @@
 /**
  * NEERAJ & NIKITA WEDDING - INTERACTIVE JAVASCRIPT
  * Bilingual Royal Experience • 10 - 12 December 2026 | Jaipur, Rajasthan
- * Designed & Developed by Kapil Tamoli
+ * Designed & Developed by Kapil Yaduvanshi
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initScheduleFilters();
   initMobileNav();
   initScrollAnimations();
+  initAutoScroll();
+  initContinuousHeroIndicator();
 });
 
 /* ==========================================================================
@@ -24,7 +26,7 @@ function initAudioExperience() {
   if (!audioEl) return;
 
   // Set gentle default background volume
-  audioEl.volume = 0.25;
+  audioEl.volume = 0.28;
   audioEl.loop = true;
 
   // Check saved session mute preference
@@ -119,7 +121,9 @@ function initWelcomeGateway() {
 
     setTimeout(() => {
       gateway.style.display = 'none';
-    }, 900);
+      // Trigger slow auto-scroll after opening the main invitation
+      startAutoScroll();
+    }, 1100);
   });
 }
 
@@ -145,7 +149,181 @@ function generateWelcomeParticles() {
 
 
 /* ==========================================================================
-   3. WEDDING COUNTDOWN TIMER (12 DECEMBER 2026)
+   3. AUTOMATIC SLOW SCROLL EXPERIENCE WITH FULL USER CONTROL
+   ========================================================================== */
+let isAutoScrollActive = false;
+let isAutoScrollPaused = false;
+let autoScrollRafId = null;
+let autoScrollAccumulator = 0;
+const AUTO_SCROLL_SPEED = 0.68; // Smooth reading pace (~40px/sec)
+
+function initAutoScroll() {
+  const controller = document.getElementById('auto-scroll-controller');
+  if (!controller) return;
+
+  controller.addEventListener('click', () => {
+    if (isAutoScrollPaused) {
+      resumeAutoScroll();
+    } else {
+      pauseAutoScroll();
+    }
+  });
+
+  // User manual interaction listeners: touching, swiping, or scrolling immediately pauses auto-scroll
+  const pauseOnUserAction = (e) => {
+    // Ignore clicks directly on controller itself or top actions
+    if (e.target && e.target.closest && (
+      e.target.closest('#auto-scroll-controller') ||
+      e.target.closest('#music-toggle-btn') ||
+      e.target.closest('#hamburger-btn')
+    )) {
+      return;
+    }
+
+    if (isAutoScrollActive && !isAutoScrollPaused) {
+      pauseAutoScroll();
+    }
+  };
+
+  window.addEventListener('touchstart', pauseOnUserAction, { passive: true });
+  window.addEventListener('wheel', pauseOnUserAction, { passive: true });
+  window.addEventListener('pointerdown', pauseOnUserAction, { passive: true });
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Space'].includes(e.code)) {
+      pauseOnUserAction(e);
+    }
+  }, { passive: true });
+
+  // Navigation items and buttons should pause auto-scroll gracefully
+  document.querySelectorAll('.nav-item, .btn-contact-action, .schedule-tab-btn, .btn-explore-invitation').forEach(el => {
+    el.addEventListener('click', () => {
+      if (isAutoScrollActive && !isAutoScrollPaused) {
+        pauseAutoScroll();
+      }
+    });
+  });
+}
+
+function startAutoScroll() {
+  // Respect reduced-motion accessibility preference
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  const controller = document.getElementById('auto-scroll-controller');
+  if (controller) {
+    controller.style.display = 'inline-flex';
+  }
+
+  isAutoScrollActive = true;
+  isAutoScrollPaused = false;
+  autoScrollAccumulator = 0;
+  updateAutoScrollUI(true);
+
+  if (autoScrollRafId) cancelAnimationFrame(autoScrollRafId);
+  autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+}
+
+function pauseAutoScroll() {
+  isAutoScrollPaused = true;
+  updateAutoScrollUI(false);
+}
+
+function resumeAutoScroll() {
+  isAutoScrollActive = true;
+  isAutoScrollPaused = false;
+  updateAutoScrollUI(true);
+
+  if (autoScrollRafId) cancelAnimationFrame(autoScrollRafId);
+  autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+}
+
+function stopAutoScroll() {
+  isAutoScrollActive = false;
+  isAutoScrollPaused = false;
+  if (autoScrollRafId) {
+    cancelAnimationFrame(autoScrollRafId);
+    autoScrollRafId = null;
+  }
+  const controller = document.getElementById('auto-scroll-controller');
+  if (controller) {
+    controller.classList.add('paused');
+    const enLabel = document.getElementById('auto-scroll-en');
+    const hiLabel = document.getElementById('auto-scroll-hi');
+    const icon = document.getElementById('auto-scroll-icon');
+    if (icon) icon.textContent = '✓';
+    if (enLabel) enLabel.textContent = 'Invitation Complete';
+    if (hiLabel) hiLabel.textContent = 'निमंत्रण पूर्ण हुआ';
+  }
+}
+
+function runAutoScrollLoop() {
+  if (!isAutoScrollActive || isAutoScrollPaused) return;
+
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  if (window.scrollY >= maxScroll - 4) {
+    stopAutoScroll();
+    return;
+  }
+
+  autoScrollAccumulator += AUTO_SCROLL_SPEED;
+  if (autoScrollAccumulator >= 1) {
+    const pixels = Math.floor(autoScrollAccumulator);
+    window.scrollBy({ top: pixels, left: 0, behavior: 'instant' });
+    autoScrollAccumulator -= pixels;
+  }
+
+  autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+}
+
+function updateAutoScrollUI(isRunning) {
+  const controller = document.getElementById('auto-scroll-controller');
+  const enLabel = document.getElementById('auto-scroll-en');
+  const hiLabel = document.getElementById('auto-scroll-hi');
+  const icon = document.getElementById('auto-scroll-icon');
+
+  if (!controller) return;
+
+  if (isRunning) {
+    controller.classList.remove('paused');
+    if (icon) icon.textContent = '⏸';
+    if (enLabel) enLabel.textContent = 'Pause Auto Scroll';
+    if (hiLabel) hiLabel.textContent = 'ऑटो स्क्रॉल रोकें';
+  } else {
+    controller.classList.add('paused');
+    if (icon) icon.textContent = '▶';
+    if (enLabel) enLabel.textContent = 'Resume Auto Scroll';
+    if (hiLabel) hiLabel.textContent = 'दोबारा शुरू करें';
+  }
+}
+
+function initContinuousHeroIndicator() {
+  const indicator = document.getElementById('hero-scroll-indicator');
+  const exploreBtn = document.getElementById('btn-explore-invitation');
+
+  const scrollToNext = (e) => {
+    e.preventDefault();
+    const coupleSection = document.getElementById('couple');
+    if (coupleSection) {
+      coupleSection.scrollIntoView({ behavior: 'smooth' });
+      // Start auto scroll smoothly once reached
+      setTimeout(() => {
+        startAutoScroll();
+      }, 700);
+    }
+  };
+
+  if (indicator) {
+    indicator.addEventListener('click', scrollToNext);
+  }
+  if (exploreBtn) {
+    exploreBtn.addEventListener('click', scrollToNext);
+  }
+}
+
+
+/* ==========================================================================
+   4. WEDDING COUNTDOWN TIMER (12 DECEMBER 2026)
    ========================================================================== */
 function initLiveCountdown() {
   const weddingDate = new Date('2026-12-12T11:00:00+05:30').getTime();
@@ -186,7 +364,7 @@ function initLiveCountdown() {
 
 
 /* ==========================================================================
-   4. WEDDING SCHEDULE DAY-WISE FILTER TABS
+   5. WEDDING SCHEDULE DAY-WISE FILTER TABS
    ========================================================================== */
 function initScheduleFilters() {
   const tabs = document.querySelectorAll('.schedule-tab-btn');
@@ -215,7 +393,7 @@ function initScheduleFilters() {
 
 
 /* ==========================================================================
-   5. SCROLL REVEAL ANIMATIONS
+   6. SCROLL REVEAL ANIMATIONS
    ========================================================================== */
 function initScrollAnimations() {
   if (!('IntersectionObserver' in window)) {
@@ -239,7 +417,7 @@ function initScrollAnimations() {
 
 
 /* ==========================================================================
-   6. CALENDAR EVENT HELPERS
+   7. CALENDAR EVENT HELPERS
    ========================================================================== */
 window.addToCalendar = function(title, startISO, endISO, location, details) {
   const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
@@ -345,7 +523,7 @@ window.downloadAllEventsICS = function() {
 
 
 /* ==========================================================================
-   7. VENUE ADDRESS COPY
+   8. VENUE ADDRESS COPY
    ========================================================================== */
 window.copyVenueAddress = function() {
   const addressText = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
@@ -375,7 +553,7 @@ window.copyVenueAddress = function() {
 
 
 /* ==========================================================================
-   8. MOBILE NAVIGATION MENU
+   9. MOBILE NAVIGATION MENU
    ========================================================================== */
 function initMobileNav() {
   const hamburger = document.getElementById('hamburger-btn');

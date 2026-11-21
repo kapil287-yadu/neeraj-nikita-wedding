@@ -54,6 +54,9 @@
   <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
   
 
+  <!-- Production Inlined Stylesheet (Instant Zero-FOUC Paint On Vercel) -->
+  
+
   <!-- External Stylesheet Fallbacks (Relative & Absolute) -->
   <link rel="stylesheet" href="style.css?v=20261121">
   <link rel="stylesheet" href="/style.css?v=20261121">
@@ -2332,6 +2335,234 @@ img {
   transform: translateY(-2px);
 }
 
+/* ==========================================================================
+   CONTINUOUS HERO SCROLL INDICATOR & BACKGROUND ANIMATION
+   ========================================================================== */
+.hero-scroll-indicator {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 22px;
+  cursor: pointer;
+  user-select: none;
+  animation: floatIndicator 3s ease-in-out infinite;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: var(--antique-gold-light);
+  text-decoration: none;
+}
+
+.hero-scroll-indicator:hover {
+  transform: translateY(4px);
+  color: #FFF;
+}
+
+.scroll-mouse-icon {
+  width: 22px;
+  height: 34px;
+  border: 2px solid var(--antique-gold);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: rgba(42, 14, 34, 0.45);
+}
+
+.scroll-wheel {
+  width: 3px;
+  height: 6px;
+  background: var(--antique-gold-light);
+  border-radius: 2px;
+  margin-top: 5px;
+  animation: wheelScroll 1.8s ease-in-out infinite;
+}
+
+.scroll-text-bilingual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.scroll-text-bilingual .en-scroll {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--antique-gold-light);
+}
+
+.scroll-text-bilingual .hi-scroll {
+  font-family: var(--font-hindi);
+  font-size: 0.75rem;
+  color: var(--blush-pink);
+  margin-top: 2px;
+}
+
+.scroll-arrow-bounce {
+  color: var(--antique-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounceDown 1.6s ease-in-out infinite;
+}
+
+@keyframes floatIndicator {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes wheelScroll {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* Gentle Ken Burns breathing background */
+@keyframes heroKenBurns {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.07);
+  }
+}
+
+.hero-bg-image {
+  animation: heroKenBurns 18s ease-in-out infinite alternate;
+}
+
+/* ==========================================================================
+   FLOATING AUTO SCROLL CONTROLLER
+   ========================================================================== */
+.auto-scroll-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  z-index: 9998;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(35, 10, 24, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid var(--antique-gold);
+  border-radius: 30px;
+  padding: 10px 18px;
+  color: var(--warm-ivory);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 15px rgba(198, 161, 91, 0.25);
+  cursor: pointer;
+  user-select: none;
+  min-height: 46px;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auto-scroll-pill:hover {
+  transform: translateY(-2px);
+  background: rgba(50, 15, 35, 0.98);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(198, 161, 91, 0.4);
+}
+
+.auto-scroll-indicator-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #25D366;
+  box-shadow: 0 0 8px #25D366;
+  animation: pulseDot 1.8s infinite;
+}
+
+.auto-scroll-pill.paused .auto-scroll-indicator-dot {
+  background: #E8A838;
+  box-shadow: 0 0 8px #E8A838;
+  animation: none;
+}
+
+@keyframes pulseDot {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.auto-scroll-icon {
+  font-size: 0.95rem;
+  color: var(--antique-gold);
+  line-height: 1;
+}
+
+.auto-scroll-labels {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.auto-scroll-labels .en-as-label {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #FFF;
+  letter-spacing: 0.3px;
+}
+
+.auto-scroll-labels .hi-as-label {
+  font-family: var(--font-hindi);
+  font-size: 0.68rem;
+  color: var(--antique-gold-light);
+}
+
+@media (max-width: 768px) {
+  .hero-fullscreen {
+    padding: 95px 16px 45px;
+    min-height: 90vh; /* gives a subtle glimpse of next section below */
+  }
+}
+
+@media (max-width: 480px) {
+  .auto-scroll-pill {
+    bottom: 16px;
+    right: 14px;
+    padding: 8px 14px;
+    gap: 8px;
+    min-height: 44px;
+  }
+  .auto-scroll-labels .en-as-label {
+    font-size: 0.75rem;
+  }
+  .auto-scroll-labels .hi-as-label {
+    font-size: 0.62rem;
+  }
+}
+
   </style>
 </head>
 <body class="welcome-locked">
@@ -2564,12 +2795,28 @@ img {
 
         <!-- Enter Invitation | निमंत्रण देखें Button -->
         <div class="hero-cta-wrap">
-          <a href="#couple" class="btn-explore-invitation">
+          <a href="#couple" class="btn-explore-invitation" id="btn-explore-invitation">
             <span class="btn-en">Enter Invitation</span>
             <span class="btn-sep">|</span>
             <span class="btn-hi">निमंत्रण देखें</span>
             <span class="arrow-down">↓</span>
           </a>
+        </div>
+
+        <!-- Continuous Scroll-Down Indicator -->
+        <div class="hero-scroll-indicator" id="hero-scroll-indicator" role="button" tabindex="0" aria-label="Scroll to explore more">
+          <div class="scroll-mouse-icon">
+            <span class="scroll-wheel"></span>
+          </div>
+          <div class="scroll-text-bilingual">
+            <span class="en-scroll">Scroll to Explore More ↓</span>
+            <span class="hi-scroll">आगे देखने के लिए नीचे स्क्रॉल करें</span>
+          </div>
+          <div class="scroll-arrow-bounce">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 10l5 5 5-5"/>
+            </svg>
+          </div>
         </div>
 
       </div>
@@ -3327,11 +3574,21 @@ img {
 
       <!-- Small, Elegant Developer Credit -->
       <div class="footer-credit-line">
-        Designed &amp; Developed by Kapil Tamoli
+        Designed &amp; Developed by Kapil Yaduvanshi
       </div>
 
     </div>
   </footer>
+
+  <!-- Floating Auto Scroll Controller -->
+  <div id="auto-scroll-controller" class="auto-scroll-pill" role="button" tabindex="0" aria-label="Toggle auto scroll" style="display: none;">
+    <span class="auto-scroll-indicator-dot"></span>
+    <span class="auto-scroll-icon" id="auto-scroll-icon">⏸</span>
+    <div class="auto-scroll-labels">
+      <span class="en-as-label" id="auto-scroll-en">Pause Auto Scroll</span>
+      <span class="hi-as-label" id="auto-scroll-hi">ऑटो स्क्रॉल रोकें</span>
+    </div>
+  </div>
 
   <!-- Main JavaScript Logic -->
   
@@ -3349,6 +3606,9 @@ img {
   <!-- Production Inlined Interactive Logic -->
   
 
+  <!-- Production Inlined Interactive Logic -->
+  
+
   <!-- External Script Fallbacks (Relative & Absolute) -->
   <script src="script.js?v=20261121"></script>
   <script src="/script.js?v=20261121"></script>
@@ -3358,7 +3618,7 @@ img {
 /**
  * NEERAJ & NIKITA WEDDING - INTERACTIVE JAVASCRIPT
  * Bilingual Royal Experience • 10 - 12 December 2026 | Jaipur, Rajasthan
- * Designed & Developed by Kapil Tamoli
+ * Designed & Developed by Kapil Yaduvanshi
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -3368,6 +3628,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initScheduleFilters();
   initMobileNav();
   initScrollAnimations();
+  initAutoScroll();
+  initContinuousHeroIndicator();
 });
 
 /* ==========================================================================
@@ -3381,7 +3643,7 @@ function initAudioExperience() {
   if (!audioEl) return;
 
   // Set gentle default background volume
-  audioEl.volume = 0.25;
+  audioEl.volume = 0.28;
   audioEl.loop = true;
 
   // Check saved session mute preference
@@ -3476,7 +3738,9 @@ function initWelcomeGateway() {
 
     setTimeout(() => {
       gateway.style.display = 'none';
-    }, 900);
+      // Trigger slow auto-scroll after opening the main invitation
+      startAutoScroll();
+    }, 1100);
   });
 }
 
@@ -3502,7 +3766,181 @@ function generateWelcomeParticles() {
 
 
 /* ==========================================================================
-   3. WEDDING COUNTDOWN TIMER (12 DECEMBER 2026)
+   3. AUTOMATIC SLOW SCROLL EXPERIENCE WITH FULL USER CONTROL
+   ========================================================================== */
+let isAutoScrollActive = false;
+let isAutoScrollPaused = false;
+let autoScrollRafId = null;
+let autoScrollAccumulator = 0;
+const AUTO_SCROLL_SPEED = 0.68; // Smooth reading pace (~40px/sec)
+
+function initAutoScroll() {
+  const controller = document.getElementById('auto-scroll-controller');
+  if (!controller) return;
+
+  controller.addEventListener('click', () => {
+    if (isAutoScrollPaused) {
+      resumeAutoScroll();
+    } else {
+      pauseAutoScroll();
+    }
+  });
+
+  // User manual interaction listeners: touching, swiping, or scrolling immediately pauses auto-scroll
+  const pauseOnUserAction = (e) => {
+    // Ignore clicks directly on controller itself or top actions
+    if (e.target && e.target.closest && (
+      e.target.closest('#auto-scroll-controller') ||
+      e.target.closest('#music-toggle-btn') ||
+      e.target.closest('#hamburger-btn')
+    )) {
+      return;
+    }
+
+    if (isAutoScrollActive && !isAutoScrollPaused) {
+      pauseAutoScroll();
+    }
+  };
+
+  window.addEventListener('touchstart', pauseOnUserAction, { passive: true });
+  window.addEventListener('wheel', pauseOnUserAction, { passive: true });
+  window.addEventListener('pointerdown', pauseOnUserAction, { passive: true });
+  window.addEventListener('keydown', (e) => {
+    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Space'].includes(e.code)) {
+      pauseOnUserAction(e);
+    }
+  }, { passive: true });
+
+  // Navigation items and buttons should pause auto-scroll gracefully
+  document.querySelectorAll('.nav-item, .btn-contact-action, .schedule-tab-btn, .btn-explore-invitation').forEach(el => {
+    el.addEventListener('click', () => {
+      if (isAutoScrollActive && !isAutoScrollPaused) {
+        pauseAutoScroll();
+      }
+    });
+  });
+}
+
+function startAutoScroll() {
+  // Respect reduced-motion accessibility preference
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  const controller = document.getElementById('auto-scroll-controller');
+  if (controller) {
+    controller.style.display = 'inline-flex';
+  }
+
+  isAutoScrollActive = true;
+  isAutoScrollPaused = false;
+  autoScrollAccumulator = 0;
+  updateAutoScrollUI(true);
+
+  if (autoScrollRafId) cancelAnimationFrame(autoScrollRafId);
+  autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+}
+
+function pauseAutoScroll() {
+  isAutoScrollPaused = true;
+  updateAutoScrollUI(false);
+}
+
+function resumeAutoScroll() {
+  isAutoScrollActive = true;
+  isAutoScrollPaused = false;
+  updateAutoScrollUI(true);
+
+  if (autoScrollRafId) cancelAnimationFrame(autoScrollRafId);
+  autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+}
+
+function stopAutoScroll() {
+  isAutoScrollActive = false;
+  isAutoScrollPaused = false;
+  if (autoScrollRafId) {
+    cancelAnimationFrame(autoScrollRafId);
+    autoScrollRafId = null;
+  }
+  const controller = document.getElementById('auto-scroll-controller');
+  if (controller) {
+    controller.classList.add('paused');
+    const enLabel = document.getElementById('auto-scroll-en');
+    const hiLabel = document.getElementById('auto-scroll-hi');
+    const icon = document.getElementById('auto-scroll-icon');
+    if (icon) icon.textContent = '✓';
+    if (enLabel) enLabel.textContent = 'Invitation Complete';
+    if (hiLabel) hiLabel.textContent = 'निमंत्रण पूर्ण हुआ';
+  }
+}
+
+function runAutoScrollLoop() {
+  if (!isAutoScrollActive || isAutoScrollPaused) return;
+
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  if (window.scrollY >= maxScroll - 4) {
+    stopAutoScroll();
+    return;
+  }
+
+  autoScrollAccumulator += AUTO_SCROLL_SPEED;
+  if (autoScrollAccumulator >= 1) {
+    const pixels = Math.floor(autoScrollAccumulator);
+    window.scrollBy({ top: pixels, left: 0, behavior: 'instant' });
+    autoScrollAccumulator -= pixels;
+  }
+
+  autoScrollRafId = requestAnimationFrame(runAutoScrollLoop);
+}
+
+function updateAutoScrollUI(isRunning) {
+  const controller = document.getElementById('auto-scroll-controller');
+  const enLabel = document.getElementById('auto-scroll-en');
+  const hiLabel = document.getElementById('auto-scroll-hi');
+  const icon = document.getElementById('auto-scroll-icon');
+
+  if (!controller) return;
+
+  if (isRunning) {
+    controller.classList.remove('paused');
+    if (icon) icon.textContent = '⏸';
+    if (enLabel) enLabel.textContent = 'Pause Auto Scroll';
+    if (hiLabel) hiLabel.textContent = 'ऑटो स्क्रॉल रोकें';
+  } else {
+    controller.classList.add('paused');
+    if (icon) icon.textContent = '▶';
+    if (enLabel) enLabel.textContent = 'Resume Auto Scroll';
+    if (hiLabel) hiLabel.textContent = 'दोबारा शुरू करें';
+  }
+}
+
+function initContinuousHeroIndicator() {
+  const indicator = document.getElementById('hero-scroll-indicator');
+  const exploreBtn = document.getElementById('btn-explore-invitation');
+
+  const scrollToNext = (e) => {
+    e.preventDefault();
+    const coupleSection = document.getElementById('couple');
+    if (coupleSection) {
+      coupleSection.scrollIntoView({ behavior: 'smooth' });
+      // Start auto scroll smoothly once reached
+      setTimeout(() => {
+        startAutoScroll();
+      }, 700);
+    }
+  };
+
+  if (indicator) {
+    indicator.addEventListener('click', scrollToNext);
+  }
+  if (exploreBtn) {
+    exploreBtn.addEventListener('click', scrollToNext);
+  }
+}
+
+
+/* ==========================================================================
+   4. WEDDING COUNTDOWN TIMER (12 DECEMBER 2026)
    ========================================================================== */
 function initLiveCountdown() {
   const weddingDate = new Date('2026-12-12T11:00:00+05:30').getTime();
@@ -3543,7 +3981,7 @@ function initLiveCountdown() {
 
 
 /* ==========================================================================
-   4. WEDDING SCHEDULE DAY-WISE FILTER TABS
+   5. WEDDING SCHEDULE DAY-WISE FILTER TABS
    ========================================================================== */
 function initScheduleFilters() {
   const tabs = document.querySelectorAll('.schedule-tab-btn');
@@ -3572,7 +4010,7 @@ function initScheduleFilters() {
 
 
 /* ==========================================================================
-   5. SCROLL REVEAL ANIMATIONS
+   6. SCROLL REVEAL ANIMATIONS
    ========================================================================== */
 function initScrollAnimations() {
   if (!('IntersectionObserver' in window)) {
@@ -3596,7 +4034,7 @@ function initScrollAnimations() {
 
 
 /* ==========================================================================
-   6. CALENDAR EVENT HELPERS
+   7. CALENDAR EVENT HELPERS
    ========================================================================== */
 window.addToCalendar = function(title, startISO, endISO, location, details) {
   const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
@@ -3702,7 +4140,7 @@ window.downloadAllEventsICS = function() {
 
 
 /* ==========================================================================
-   7. VENUE ADDRESS COPY
+   8. VENUE ADDRESS COPY
    ========================================================================== */
 window.copyVenueAddress = function() {
   const addressText = "Tulsi Marriage Garden, Near Bhairo Circle, Pratap Nagar, Jaipur, Rajasthan, India";
@@ -3732,7 +4170,7 @@ window.copyVenueAddress = function() {
 
 
 /* ==========================================================================
-   8. MOBILE NAVIGATION MENU
+   9. MOBILE NAVIGATION MENU
    ========================================================================== */
 function initMobileNav() {
   const hamburger = document.getElementById('hamburger-btn');
